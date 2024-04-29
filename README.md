@@ -19,13 +19,17 @@ SECCIONES DE LA PAGINA WEB:
 PROTOTIPO DEL DISEÑO:
 Diseño interactivo: https://www.figma.com/proto/O3BzmmLej6K3qpF2dIefST/Planet-Superheroes?type=design&node-id=1-2&t=TYZMZ6cCmqcnFEov-0&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=1%3A2
 
-image
+![planetsuperheroesreadme](https://github.com/Web-Developers2-0/ProyectoIntegrador2/assets/94198041/da92da51-25b0-4320-b878-147fd3cc32f0)
+
+![image](https://github.com/Web-Developers2-0/ProyectoIntegrador2/assets/94198041/0e8159a4-f043-49e8-90b0-40c919285df4)
 
 DESARROLLADORES:
-🟆 Churquina Villa, Nicolás Isaías
 🟆 Martinez, Duncan
 🟆 Robles, Emilce
 🟆 Virinni, Marco
 🟆 Velez, Paula
 🟆 Vargas, Veronica Cecilia
 🟆 Zazzarini, Hernan
+🟆 Pamela Grisel Ponce.
+🟆 Jorge Pegoraro.
+🟆 Gonzalo Abel Olmedo.
