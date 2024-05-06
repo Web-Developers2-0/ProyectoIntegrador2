@@ -1,0 +1,13 @@
+<h1> Nuestros Productos</h1>
+
+<div class="card_section-titulo">
+<a href="marvelProducts.html"><h2 class="card_section-titulo1">Marvel Comics</h2></a>
+<a href="dcProducts.html"><h2 class="card_section-titulo2"> DC Comics</h2></a>
+</div>
+
+<section id="card_section-root">
+    <div *ngFor="let product of products">
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+      </div>
+</section>
