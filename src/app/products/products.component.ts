@@ -65,7 +65,7 @@ export class ProductsComponent  {
       name: "Deadpool",
       price: "300.000",
       description: "Deadpool",
-      image: "/assets/marvel-deadpool.jpg",
+      image: "/assets/images/marvel-deadpool.jpg",
       detailPath: "detail_product_pages/Detalle_Comic_Dead_Pool.html",
       category: "marvel"
     },
