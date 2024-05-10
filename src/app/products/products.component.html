@@ -1,37 +1,37 @@
-<h1> Nuestros Productos</h1>
+<h1>Nuestros Productos</h1>
 
+<!-- Títulos y enlaces para cambiar la categoría -->
 <div class="card_section-titulo">
-  <a href=""><h2 class="card_section-titulo1">Marvel Comics</h2></a>
-  <a href=""><h2 class="card_section-titulo2"> DC Comics</h2></a>
+  <button (click)="updateCategory('marvel')">Marvel Comics</button>
+  <button (click)="updateCategory('dc')">DC Comics</button>
 </div>
 
-<div id="card_section-root">
-  <ng-container *ngIf="selectedCategory === 'marvel'">
-    <div *ngFor="let product of products" class="card">
-      <img [src]="product.image" [alt]="product.description">
-      <div class="card-content">
-        <h3>${{ product.price }}</h3>
-        <h4>{{ product.description }}</h4>
-        <button (click)="redirectToDetail(product.detailPath)">Ver Mas</button>
-      </div>
+<!-- Sección para productos de Marvel -->
+<ng-container *ngIf="selectedCategory === 'marvel'">
+  <div class="card" *ngFor="let product of products">
+    <img [src]="product.image" [alt]="product.description">
+    <div class="card-content">
+      <h3>${{ product.price }}</h3>
+      <h4>{{ product.name }} - {{ product.description }}</h4>
+      <button (click)="redirectToDetail(product.detailPath)">Ver Más</button>
     </div>
- 
+  </div>
 </ng-container>
 
-<ng-container *If="selectedCategory === 'marvel'">
-    <div id="card_section-root">
-      <div *ngFor="let product of products" class="card">
-        <img [src]="product.image" [alt]="product.description">
-        <div class="card-content">
-          <h3>${{ product.price }}</h3>
-          <h4>{{ product.description }}</h4>
-          <button (click)="redirectToDetail(product.detailPath)">Ver Mas</button>
-        </div>
-      </div>
+<!-- Sección para productos de DC -->
+<ng-container *ngIf="selectedCategory === 'dc'">
+  <div class="card" *ngFor="let product of products">
+    <img [src]="product.image" [alt]="product.description">
+    <div class="card-content">
+      <h3>${{ product.price }}</h3>
+      <h4>{{ product.name }} - {{ product.description }}</h4>
+      <button (click)="redirectToDetail(product.detailPath)">Ver Más</button>
     </div>
-    </ng-container>
-   
+  </div>
+</ng-container>
 
 
+
+  
 
   
