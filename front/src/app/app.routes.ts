@@ -12,9 +12,6 @@ export const routes: Routes = [
     {path:'about', component:AboutComponent},
     {path:'app-products', component:ProductsComponent},
 
-/*     { path: '', redirectTo: '/products/marvel', pathMatch: 'full' },
-    { path: 'app-products/:category', component: ProductsComponent }, */
-
 
 
     { path: 'login', component:LoginComponent },
