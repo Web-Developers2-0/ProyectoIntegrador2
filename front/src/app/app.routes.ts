@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ProductsComponent } from './products/products.component';
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 export const routes: Routes = [
 
@@ -10,5 +12,7 @@ export const routes: Routes = [
     {path:'about', component:AboutComponent},
     {path:'app-products', component:ProductsComponent},
     { path: '', redirectTo: '/products/marvel', pathMatch: 'full' },
-    { path: 'app-products/:category', component: ProductsComponent }
+    { path: 'app-products/:category', component: ProductsComponent },
+    { path: 'login', component:LoginComponent },
+    { path: 'dashboard', component: DashboardComponent }
 ];
