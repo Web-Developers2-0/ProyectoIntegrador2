@@ -11,8 +11,17 @@ export const routes: Routes = [
     {path:'home', component:HomeComponent},
     {path:'about', component:AboutComponent},
     {path:'app-products', component:ProductsComponent},
-    { path: '', redirectTo: '/products/marvel', pathMatch: 'full' },
-    { path: 'app-products/:category', component: ProductsComponent },
+
+/*     { path: '', redirectTo: '/products/marvel', pathMatch: 'full' },
+    { path: 'app-products/:category', component: ProductsComponent }, */
+
+
+
     { path: 'login', component:LoginComponent },
-    { path: 'dashboard', component: DashboardComponent }
+    { path: 'dashboard', component: DashboardComponent },
+
+    {path:"", redirectTo:"/app-products", pathMatch:"full"},
+    {path:'app-products', component:ProductsComponent},
+   
+
 ];
