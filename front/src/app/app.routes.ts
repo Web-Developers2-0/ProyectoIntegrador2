@@ -4,6 +4,7 @@ import { AboutComponent } from './about/about.component';
 import { ProductsComponent } from './products/products.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SignupComponent } from './signup/signup.component';
 
 export const routes: Routes = [
 
@@ -21,4 +22,5 @@ export const routes: Routes = [
     {path:'app-products', component:ProductsComponent},
    
 
+    { path: 'register', component: SignupComponent}
 ];
