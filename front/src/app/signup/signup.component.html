@@ -38,12 +38,12 @@
                 <small *ngIf="signupForm.get('confirmPassword')?.errors?.['required'] && signupForm.get('confirmPassword')?.touched">*Confirmar contraseña es requerido</small>
             </div>
             <div>
-                <button type="submit" [disabled]="signupForm.invalid">Registrarse</button>
-            </div>            
+                <button class="btnSignUp" type="submit" [disabled]="signupForm.invalid">Registrarse</button>
+            </div>         
+                                            
             <p>
-                ¿Ya tienes una cuenta? <a class="link" href="#">Inicia sesión</a>
+                ¿Ya tienes una cuenta? <a class="link" routerLink="/login" routerLinkActive="active"> Inicia Sesión</a>
             </p>
-        </div>
-        <a class="go_back" href="#">Volver al Inicio</a>
+        </div>        
     </form>
 </section>
