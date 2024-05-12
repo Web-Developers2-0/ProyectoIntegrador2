@@ -1,0 +1,49 @@
+<section class="form-register">
+    <form (ngSubmit)="onSubmit()" id="form">
+        <div class="title">
+            <img src="../../assets/images/logo_planet.png" alt="Logo" class="logo">            
+            <h1>PLANET SUPER HEROES</h1>
+        </div>
+        <h5>Crear nuevo usuario</h5>
+        <div class="cotenedor">
+            <div class="form__field">
+                <input type="text" placeholder="Nombre y Apellido" autocomplete="off" [(ngModel)]="userName"
+                    name="userName" />
+                <small></small>
+            </div>
+
+            <div class="form__field">
+                <input type="email" placeholder="Email" autocomplete="off" [(ngModel)]="email" name="email" />
+                <small></small>
+            </div>
+
+            <div class="form__field">
+                <input type="text" placeholder="Teléfono" autocomplete="off" [(ngModel)]="phone" name="phone" />
+                <small></small>
+            </div>
+
+            <div class="form__field">
+                <input type="text" placeholder="Dirección" autocomplete="off" [(ngModel)]="address" name="address" />
+                <small></small>
+            </div>
+
+            <div class="form__field">
+                <input type="password" placeholder="Contraseña" [(ngModel)]="password" name="password" />
+                <small></small>
+            </div>
+
+            <div class="form__field">
+                <input type="password" placeholder="Confirmar contraseña" [(ngModel)]="confirmPassword"
+                    name="confirmPassword" />
+                <small></small>
+            </div>
+            <div>
+                <input type="submit" value="Registrate" class="button" />
+            </div>            
+            <p>
+                ¿Ya tenés una cuenta?<a class="link" href="#">Iniciá sesión</a>
+            </p>
+        </div>
+        <a class="go_back" href="#">Volver al Inicio</a>
+    </form>
+</section>

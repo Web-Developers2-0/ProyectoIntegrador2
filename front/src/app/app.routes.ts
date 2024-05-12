@@ -4,6 +4,7 @@ import { AboutComponent } from './about/about.component';
 import { ProductsComponent } from './products/products.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SignupComponent } from './signup/signup.component';
 
 export const routes: Routes = [
 
@@ -14,5 +15,6 @@ export const routes: Routes = [
     { path: '', redirectTo: '/products/marvel', pathMatch: 'full' },
     { path: 'app-products/:category', component: ProductsComponent },
     { path: 'login', component:LoginComponent },
-    { path: 'dashboard', component: DashboardComponent }
+    { path: 'dashboard', component: DashboardComponent },
+    { path: 'register', component: SignupComponent}
 ];
