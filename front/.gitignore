@@ -6,16 +6,15 @@
 /out-tsc
 /bazel-out
 
-<<<<<<< HEAD
-=======
 #Venv
 */back/planetSuperheroes/
 __pycache__/
+.Venv/
+venv/
+pythonenv*
 
-
->>>>>>> 8f16fb667dc70fbf3277f0dd476abaf8f852010b
 # Node
-/node_modules
+node_modules
 npm-debug.log
 yarn-error.log
 
