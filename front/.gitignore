@@ -10,7 +10,7 @@
 */back/planetSuperheroes/
 __pycache__/
 .Venv/
-venv/
+venv
 pythonenv*
 
 # Node
