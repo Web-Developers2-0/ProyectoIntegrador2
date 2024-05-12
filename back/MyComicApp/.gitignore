@@ -7,11 +7,9 @@
 /bazel-out
 
 #Venv
-
 __pycache__/
-.Venv/
 venv/
-pythonenv*
+
 
 # Node
 node_modules
