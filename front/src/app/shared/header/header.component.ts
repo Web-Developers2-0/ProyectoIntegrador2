@@ -7,7 +7,7 @@ import { ProductsComponent } from '../../products/products.component';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink,RouterModule,RouterLinkActive,NgIf, CommonModule,ProductsComponent],
+  imports: [RouterLink,RouterModule,RouterLinkActive,NgIf, CommonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
