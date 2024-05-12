@@ -7,13 +7,8 @@
 /bazel-out
 
 #Venv
-back/PS
-back/PS/
-/PS
 
-
-
-
+PS
 # Node
 /node_modules
 npm-debug.log
