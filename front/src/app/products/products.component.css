@@ -1,8 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+
 a {
     text-decoration: none;
   }
   #card_section-root {
-    background-color: var(--background);
+    background-color: #9a1515;
     font-family: "Poppins", sans-serif;
     display: flex;
     width: 100%;
@@ -55,23 +64,23 @@ a {
     border-radius: 20px;
   }
   
-  #card_section-root div h3 {
+  #card_section-root  h3 {
     margin: 0.5em 0em;
     color: white;
   }
   
-  #card_section-root div h4 {
+  #card_section-root  h4 {
     font-size: 0.875em;
     margin: 0.5em 0em;
     color: white;
     font-weight: normal;
   }
   
-  #card_section-root div .button {
+  #card_section-root button {
     width: 100%;
     border: none;
     padding: 0.7em;
-    color: var(--background);
+    color: #9a1515;
     margin: 0.5em 0em;
     border-radius: 20px;
     background-color: #88ace0;
@@ -85,7 +94,7 @@ a {
   /* ANTIGUOS ESTILOS
   #card_section-root div:hover {
     transform: translateY(-10px);
-    box-shadow: 1.25px 1.25px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 1.25px 1.25px 10px 
     cursor: pointer;
     /* transform: rotateY(180deg);*/
   
@@ -97,8 +106,8 @@ a {
   }
   
   div.card_section-titulo a {
-    background-color: var(--background-titulo);
-    color: var(--background-titulo);
+    background-color:#e5ac57; ;
+    color: #e5ac57;;
     width: 100%;
     border: 3px solid #000;
   
@@ -112,8 +121,8 @@ a {
   }
   
   div.card_section-titulo h2.card_section-titulo1 {
-    background-color: var(--background-titulo);
-    color: var(--background-titulo);
+    background-color:#e5ac57; ;
+    color:#e5ac57; ;
     width: 100%;
     border: 3px solid #000;
   
@@ -127,7 +136,7 @@ a {
   }
   
   div.card_section-titulo h2.card_section-titulo2 {
-    background-color: var(--background-titulo);
+    background-color:#e5ac57; ;
   
     width: 100%;
     border: 3px solid #000;
@@ -140,7 +149,7 @@ a {
     font-weight: 400;
   }
   div.card_section-titulo {
-    background-color: var(--background);
+    background-color: #9a1515;
     font-size: large;
     width: 100%;
     display: flex;
@@ -164,7 +173,7 @@ a {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    background-color: var(--background);
+    background-color:#9a1515 ;
   }
   
   .card-content {
@@ -177,7 +186,7 @@ a {
   /* TABLET */
   @media (max-width: 769px) {
     #card_section-root {
-      background-color: var(--background);
+      background-color: #9a1515;
       font-family: "Poppins", sans-serif;
       display: flex;
       width: 100%;
@@ -223,7 +232,7 @@ a {
   /* CELULAR */
   @media (max-width: 321px) {
     #card_section-root {
-      background-color: var(--background);
+      background-color:#9a1515 ;
       font-family: "Poppins", sans-serif;
       display: flex;
   
@@ -263,27 +272,27 @@ a {
     }
     .card_section-titulo1 {
       background-color: rgb(23, 23, 22);
-      color: var(--background-titulo);
+      color: #e5ac57;;
     }
   
     .card_section-titulo2 {
-      background-color: var(--background-titulo);
+      background-color:#e5ac57; ;
       color: rgb(11, 11, 10);
     }
     .card_section-titulo {
       padding-top: 25px;
-      background-color: var(--background);
+      background-color: #9a1515;
       font-size: large;
       width: 100%;
       display: flex;
       justify-content: space-evenly;
       align-items: center;
     }
-    #card_section-root div .button {
+ button {
       width: 100%;
       border: none;
       padding: 10px;
-      color: var(--background);
+      color: #9a1515;
       margin: 10px;
       border-radius: 20px;
       background-color: #88ace0;
