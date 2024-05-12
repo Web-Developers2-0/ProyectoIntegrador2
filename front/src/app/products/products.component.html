@@ -1,0 +1,42 @@
+<h1> Nuestros Productos</h1>
+
+<div class="card_section-titulo">
+  <a href="#" (click)="updateCategory('marvel'); $event.preventDefault() "><h2 class="card_section-titulo1">Marvel Comics</h2></a>
+  <a href="#" (click)="updateCategory('dc'); $event.preventDefault()"><h2 class="card_section-titulo2"> DC Comics</h2></a>
+</div>
+
+<div id="card_section-root">
+  
+  <ng-container *ngIf="selectedCategory === 'marvel'">
+
+    <div *ngFor="let product of productList" class="card">
+      <img [src]="product.image" [alt]="product.description">
+      <div class="card-content">
+        <h3>${{ product.price }}</h3>
+        <h4>{{ product.description }}</h4>
+        <button >Ver Mas</button>
+      </div>
+    </div>
+ 
+  </ng-container>
+  <ng-container *ngIf="selectedCategory === 'dc'">
+
+    <div *ngFor="let product of productList" class="card">
+      <img [src]="product.image" [alt]="product.description">
+      <div class="card-content">
+        <h3>${{ product.price }}</h3>
+        <h4>{{ product.description }}</h4>
+        <button>Ver Mas</button>
+      </div>
+    </div>
+
+  </ng-container>
+</div>
+
+   
+
+
+
+  
+
+  

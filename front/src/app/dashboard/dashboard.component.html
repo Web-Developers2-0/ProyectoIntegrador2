@@ -1,0 +1,65 @@
+<p *ngIf="isAuthenticated">Usuario no autenticado</p>
+<main>
+<section class="table_section" *ngIf="!isAuthenticated">
+    <div class="user_banner">
+        <div class="user_data">
+            <div class="user_img">
+                <img src="../../assets/images/user.png" alt="usuario">
+            </div>
+            <span>Nombre de usuario</span>
+        </div>
+        
+        <button class="logout_btn">
+            cerrar sesión
+        </button>
+    </div>
+    <div class="table_title">
+        <h3>Historial de compras</h3>
+    </div>
+    <div class="table_container">
+        <table class="table">
+            <thead class="thead">
+                <tr class="tr">
+                    <th scope="col">ID</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Total</th>
+                <th scope="col">Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">#12345</td>
+                <td>11/05/2024</td>
+                <td>IMG</td>
+                <td>1</td>
+                <td>$2000</td>
+                <td>$2000</td>
+                <td style="background-color: blueviolet; border-radius: 20px; text-align: center; font-weight: 600; color: white" >En proceso</td>
+              </tr>
+              <tr>
+                <td scope="row">#34564</td>
+                <td>09/05/2024</td>
+                <td>IMG</td>
+                <td>1</td>
+                <td>$2000</td>
+                <td>$2000</td>
+                <td style="background-color: rgb(58, 126, 58); border-radius: 20px; text-align: center; font-weight: 600; color: white">Completado</td>
+              </tr>
+              <tr>
+                <td scope="row">#76543</td>
+                <td>04/05/2024</td>
+                <td>IMG</td>
+                <td>2</td>
+                <td>$2000</td>
+                <td>$4000</td>
+                <td style="background-color: rgb(58, 126, 58); border-radius: 20px; text-align: center; font-weight: 600; color: white">Completado</td>
+              </tr>
+              
+            </tbody>
+          </table>
+    </div>
+</section>
+</main>
