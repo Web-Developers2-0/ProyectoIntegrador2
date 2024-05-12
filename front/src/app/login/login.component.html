@@ -41,10 +41,9 @@
 
             <div>
                 <button class="botom" type="submit" [disabled]="!form.valid"> Ingresar </button>
-                <div *ngIf="loading" class="loading">Iniciando sesión...</div>
             </div>
             
-            <p><a href="#">¿Olvidaste tu contraseña?</a></p>
+            <p class="link"><a routerLink="/register">No tenés una cuenta? Regístrate aquí!</a></p>
             
             <a class="go_back" href="#">Volver al Inicio</a>
         </div>
