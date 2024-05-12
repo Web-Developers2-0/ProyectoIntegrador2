@@ -7,7 +7,7 @@ main{
 }
 
 .user_banner{
-    background-image: url(../../assets/images/banner_user.webp);
+    background-image: url(../../assets/images/banner3.jpg);
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -57,6 +57,15 @@ main{
     border-radius: 0.7rem;
     padding: 5px 10px;
     font-family: 'Bangers', sans-serif;
+    background-color: rgba(255, 255, 255, 0.3);    
+    backdrop-filter: blur(5px);
+    color: #fbf0f0;
+    -webkit-text-stroke: 1.2px black;
+    font-size: 22px;    
+}
+
+.logout_btn:hover {
+    background-color: rgba(255, 0, 0, 0.3); 
 }
 
 .table_section{
@@ -81,7 +90,7 @@ main{
 }
 
 .table_title{
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     color: #000;
     border: solid 2px #000;
     border-radius: 1rem;
@@ -89,4 +98,11 @@ main{
     text-align: center;
     padding: 5px;
     font-family: 'Bangers', sans-serif;
+}
+
+.table_title h3{
+    background-color:#FCD69E;
+    padding: 0;
+    margin: 0;
+    border-radius: 10px;
 }
