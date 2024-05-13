@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-import os;
 
 from pathlib import Path
 
@@ -79,22 +78,18 @@ WSGI_APPLICATION = 'universidad.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 DATABASES = {
- 'sqlite': {
- 'ENGINE': 'django.db.backends.sqlite3',
- 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
- },
- 'default': {
- 'ENGINE': 'django.db.backends.mysql',
- 'NAME': 'planets',
- 'USER': 'root',
- 'PASSWORD': '123456789',
- 'HOST': 'localhost',
- 'PORT': '3306',
- 'OPTIONS': {
- 'sql_mode': 'traditional',
- }
- }
- }
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'planetSuperheroesDB',
+        'USER': 'root',
+        'PASSWORD': '123456789',
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'OPTIONS': {
+            'sql_mode': 'traditional',
+        }
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
