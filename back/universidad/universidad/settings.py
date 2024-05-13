@@ -85,9 +85,9 @@ DATABASES = {
  },
  'default': {
  'ENGINE': 'django.db.backends.mysql',
- 'NAME': 'planets',
+ 'NAME': 'planetsuperheroesdb',
  'USER': 'root',
- 'PASSWORD': '123456789',
+ 'PASSWORD': 'admin',
  'HOST': 'localhost',
  'PORT': '3306',
  'OPTIONS': {

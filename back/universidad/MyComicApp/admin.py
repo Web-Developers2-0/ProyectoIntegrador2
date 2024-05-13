@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import User, Role, Category, Product, Order, OrderItem
 
+
 class UserAdmin(admin.ModelAdmin):
     list_display = ('id_users', 'first_name', 'last_name', 'email', 'address', 'image', 'display_orders')
 
@@ -9,26 +10,38 @@ class UserAdmin(admin.ModelAdmin):
 
     display_orders.short_description = 'Orders'
 
-@admin.register(User)
-class UserAdmin(admin.ModelAdmin):
-    list_display = ('id_users', 'first_name', 'last_name', 'email', 'address', 'image')
+admin.site.register(User,UserAdmin)
 
-@admin.register(Role)
+
+
 class RoleAdmin(admin.ModelAdmin):
-    list_display = ('id_role', 'name', 'user')
+    list_display = ('id_role', 'name')
 
-@admin.register(Category)
+admin.site.register(Role,RoleAdmin)
+
+
+
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id_category', 'name')
 
-@admin.register(Product)
+admin.site.register(Category,CategoryAdmin)
+
+
+
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('id_product', 'name', 'description', 'price', 'discount', 'stock', 'image', 'pages', 'format', 'weight', 'isbn', 'category')
 
-@admin.register(Order)
+admin.site.register(Product,ProductAdmin)
+
+
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('id_order', 'id_user', 'state', 'order_date', 'payment_method', 'shipping_method', 'payment_status', 'total_amount')
 
-@admin.register(OrderItem)
+admin.site.register(Order,OrderAdmin)
+
+
 class OrderItemAdmin(admin.ModelAdmin):
     list_display = ('id_order_items', 'quantity', 'product', 'order')
+    
+    
+admin.site.register(OrderItem,OrderItemAdmin)
