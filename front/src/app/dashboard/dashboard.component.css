@@ -134,3 +134,21 @@ td .completed{
     color: #3E522E;
     padding: 0.1rem 0.8rem;
 }
+
+.cancelled{
+    background-color: rgb(242, 197, 167);
+    border-radius: 20px;
+    border: solid 1px rgb(112, 85, 69);
+    font-weight: 600;
+    color: rgb(112, 85, 69);
+    padding: 0.1rem 0.8rem;
+}
+
+.logout_dashboard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fbf0f0;
+    margin-top: 2.5rem;
+}
