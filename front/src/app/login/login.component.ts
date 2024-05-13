@@ -42,6 +42,8 @@ export class LoginComponent {
 
       if (this.form.valid) {
         this.loginService.methodlogin(this.form.value as LoginRequest);
+        localStorage.setItem('userData', JSON.stringify(this.form.value));
+        
         this.router.navigate(['/dashboard']);
         this.form.reset();
       } else {
