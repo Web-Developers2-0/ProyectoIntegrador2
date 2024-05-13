@@ -18,8 +18,9 @@ body {
     height: 680px;
     background: #1e1e1e;
     margin: auto;
-    margin-top: 2rem;
+    margin-top: 2.5rem;
     box-shadow: 7px 13px 37px #000;
+    border-top: 20px solid #9a1515;
     padding: 5px 40px;
     color: #ffffff;
 }
@@ -89,16 +90,13 @@ body {
 
 .title {
     display: flex;
-    position: relative;
-    top: 15px;
-    justify-content: space-around;
-    right: 45px;
+    justify-content: center;
+    align-items: center;
 }
 
-.logo-register {
-    width: 100px;
-    height: 65px;
-    margin-left: 15px;
+.logo {
+    max-height: 180px;
+    margin: 0 auto;
 }
 
 input {
