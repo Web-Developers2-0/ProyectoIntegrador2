@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bangers&family=Hachi+Maru+Pop&family=Patrick+Hand&display=swap');
 
 main{
-    background: rgb(105, 105, 105);
+    background: #1e1e1e;
     height: 100vh;
     width: 100%;
 }
@@ -105,4 +105,32 @@ main{
     padding: 0;
     margin: 0;
     border-radius: 10px;
+}
+
+tr img{
+    width: 50px;
+    height: 60px;
+}
+
+tr {
+    text-align: center;
+    vertical-align: middle;
+}
+
+td .pending{
+    background-color: rgb(206, 167, 242);
+    border-radius: 20px;
+    border: solid 1px rgb(93, 69, 112);
+    font-weight: 600; 
+    color: rgb(93, 69, 112);
+    padding: 0.1rem 0.8rem;
+}
+
+td .completed{
+    background-color: #C9DCBB;
+    border-radius: 20px;
+    border: solid 1px #3E522E;
+    font-weight: 600; 
+    color: #3E522E;
+    padding: 0.1rem 0.8rem;
 }
