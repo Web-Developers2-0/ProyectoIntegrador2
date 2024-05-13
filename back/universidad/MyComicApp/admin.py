@@ -2,7 +2,6 @@ from django.contrib import admin
 from .models import User, Role, Category, Product, Order, OrderItem
 
 
-
 class UserAdmin(admin.ModelAdmin):
     list_display = ('id_users', 'first_name', 'last_name', 'email', 'address', 'image', 'display_orders')
 
@@ -16,7 +15,7 @@ admin.site.register(User,UserAdmin)
 
 
 class RoleAdmin(admin.ModelAdmin):
-    list_display = ('id_role', 'name', 'user')
+    list_display = ('id_role', 'name')
 
 admin.site.register(Role,RoleAdmin)
 
@@ -44,5 +43,5 @@ admin.site.register(Order,OrderAdmin)
 class OrderItemAdmin(admin.ModelAdmin):
     list_display = ('id_order_items', 'quantity', 'product', 'order')
     
-admin.site.register(OrderItem,OrderItemAdmin)    
     
+admin.site.register(OrderItem,OrderItemAdmin)

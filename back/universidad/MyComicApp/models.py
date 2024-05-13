@@ -5,10 +5,11 @@ class User(models.Model):
     first_name = models.CharField(max_length=45, blank=False)
     last_name = models.CharField(max_length=45, blank=False)
     email = models.CharField(max_length=45, blank=False, unique=True)
-    password = models.CharField(max_length=255, blank=False)
-    address = models.CharField(max_length=255, blank=True, null=True)
+    password = models.CharField(max_length=45, blank=False)
+    address = models.CharField(max_length=45, blank=True, null=True)
     image = models.CharField(max_length=255, blank=True, null=True)
     orders = models.ManyToManyField('Order', related_name='users', blank=True)
+    role = models.ForeignKey('Role', on_delete=models.CASCADE, related_name='users', blank=True, null=True)
     
     class Meta:
         db_table = 'users'
@@ -21,7 +22,6 @@ class User(models.Model):
 class Role(models.Model):
     id_role = models.AutoField(primary_key=True)
     name = models.CharField(max_length=45, blank=False)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
     
     class Meta:
         db_table = 'roles'
@@ -70,7 +70,7 @@ class Product(models.Model):
 
 class Order(models.Model):
     id_order = models.AutoField(primary_key=True)
-    id_user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    id_user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, db_column='user_id')
     state = models.CharField(max_length=45, blank=False)
     order_date = models.DateField(null=True)
     payment_method = models.CharField(max_length=45, blank=False)
@@ -89,7 +89,7 @@ class Order(models.Model):
 class OrderItem(models.Model):
     id_order_items = models.AutoField(primary_key=True)
     quantity = models.IntegerField(blank=False)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, related_name='order_items')
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     
     class Meta:

@@ -9,10 +9,17 @@
 #Venv
 */back/planetSuperheroes/
 __pycache__/
+<<<<<<< HEAD
+back/PS
+
+
+
+=======
 .Venv/
 venv
 pythonenv*
 
+>>>>>>> e88ecba4550597646fd065123aa6d9adeab17b9a
 # Node
 node_modules
 npm-debug.log

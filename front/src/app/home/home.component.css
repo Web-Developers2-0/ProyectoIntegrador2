@@ -16,7 +16,6 @@
   gap: 2rem;
 }
 
-/* Estilos para las columnas */
 .reseña_card {
   width: 250px; /* Ancho de cada columna */
   height: 290px;
@@ -28,13 +27,15 @@
   flex-direction: column;
   text-align: center;
   align-items: center;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bolder;
+  color: #212529;
 }
 
 .reseña_card h2 {
   font-family: "Bangers";
   letter-spacing: 2px;
+  font-size: 1.3rem;
 }
 
 
@@ -47,327 +48,142 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  padding: 1rem;
-}
-.reseña_card .bottom img {
-  width: 60px;
+  padding: 0.2rem;
 }
 
-/* Estilos para limpiar los flotadores */
+.bottom{
+  overflow: hidden;
+}
+
+.bottom img {
+  width: 55px;
+}
+
 .clearfix::after {
   content: "";
   clear: both;
   display: table;
 }
 
-/* Estilo para el título de la reseña */
 .review-title h1 {
   text-align: center;
   font-size: 24px;
   margin-bottom: 60px;
-  font-family: "Bangers"; /* Cambia "Hand drawn letters Royalty" a la fuente que desees */
-  font-size: 50px; /* Cambia "45px" al tamaño de fuente deseado */
-  font-weight: bold; /* Puedes ajustar el grosor de la fuente si lo deseas */
-  color: #e5ac57; /* Cambia "blue" al color que desees */
-  text-transform: uppercase; /* Convierte el texto en mayúsculas */
+  font-family: "Bangers";
+  font-size: 50px;
+  font-weight: bold;
+  color: #e5ac57;
+  text-transform: uppercase;
   border-right-color: #e5ac57;
   letter-spacing: 3px;
   -webkit-text-stroke: 1.2px black;
 }
 
-/* Estilo para los nombres */
 .column h2 {
-  display: inline-block; /* Muestra los nombres en la misma línea que las imágenes */
-  margin-left: 10px; /* Agrega un margen izquierdo para separar la imagen del nombre */
-  font-family: "Hand drawn letters Royalty", sans-serif; /* Cambia "Hand drawn letters Royalty" a la fuente que desees */
-  font-size: 30px; /* Cambia "30px" al tamaño de fuente deseado */
-  font-weight: bold; /* Puedes ajustar el grosor de la fuente si lo deseas */
-  /* Otros estilos de fuente, como color, se pueden aplicar aquí */
+  display: inline-block;
+  margin-left: 10px; 
+  font-family: "Hand drawn letters Royalty", sans-serif;
+  font-size: 30px;
+  font-weight: bold;
 }
 /* <----------Carousel---------> */
 .container-carousel {
-    position: relative;
-    width:100%;
-    height: 300px;
-    background-color: #e0e0e0;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.66);
-    border-radius: 15px;
-    overflow: hidden;
-    margin-top: 5rem;
+  position: relative;
+  width:100%;
+  height: 300px;
+  background-color: #e0e0e0;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.66);
+  border-radius: 15px;
+  overflow: hidden;
+  margin-top: 5rem;
 }
 
 .carruseles {
-    width: 400%;
-    height: 100%;
-    display: flex;
-
+  width: 400%;
+  height: 100%;
+  display: flex;
 }
 
 .slider-section {
-    width: calc(100% / 4);
-    height: 100%;
+  width: calc(100% / 4);
+  height: 100%;
 }
 
 .slider-section img {
-    width: 100%;
-    height: 100%;
-    object-fit:fill;
-    border-radius: 15px;
+  width: 100%;
+  height: 100%;
+  object-fit:fill;
+  border-radius: 15px;
 }
 
 .btn-left,
 .btn-right {
-    display: flex;
-    position: absolute;
-    top: 50%;
-    font-size: 1.5rem;
-    background-color: transparent;
-    border-radius: 50%;
-    padding: 5px;
-    font-weight: 600;
-    cursor: pointer;
-    color: #ffffff81;
-    transform: translate(0,-50%);
-    transition: .5s ease;
-    user-select: none;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  font-size: 1.5rem;
+  background-color: transparent;
+  border-radius: 50%;
+  padding: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #ffffff81;
+  transform: translate(0,-50%);
+  transition: .5s ease;
+  user-select: none;
 }
 
 .btn-left:hover,
 .btn-right:hover {
-    background-color: #333333d4;
-    color: #fff;
+  background-color: #333333d4;
+  color: #fff;
 }
 
 .btn-left {
-    left: 10px;
+  left: 10px;
 }
 
 .btn-right {
-    right: 10px;
+  right: 10px;
 }
 /* <----------End Carrousel--------->   */
 
 /*  <----------Section Banner--------->  */
-
 #banner{
-    width: 100%;
-    height: 250px;
-    background-color: #1E1E1E;
-    font: 'Bangers';
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
+  width: 100%;
+  height: 250px;
+  background-color: #1e1e1e;
+  font: 'Bangers';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  border-top: solid 1px #fcd692;
+  border-bottom: solid 1px #fcd692;
 }
 
 .container {
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    padding: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1rem;
 }
 
 .button {
-    width: 150px;
-    height: 150px;
-    background-size: cover;
-    margin: 10px;
-    text-align: center;
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+  margin: 10px;
+  text-align: center;
 }
 .button img {
-    max-width: 100%;
-    max-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 .button-text {
-    font-family: 'Bangers', sans-serif;
-    color: #88ACE0;
-    font-weight: bold;
+  font-family: 'Bangers', sans-serif;
+  color: #88ACE0;
+  font-weight: bold;
 }
+
 /* <----------End Section Banner--------->  */
-
-
-/* <----------Contact Section---------> */
-.form_contact__container {
-    padding: 40px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #1b1b1b;
-    min-height: 60vh; /* Ajusta la altura mínima del contenedor para ocupar toda la altura de la ventana */
-}
-
-.item {
-    width: 100%;
-    max-width: 800px;
-    border-radius: 20px;
-    box-shadow: 0 20px 10px rgba(0, 0, 0, .4);
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    z-index: 2;
-}
-.contact{
-    background-color: #e5ac57;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.contact h2 {
-    font-family:'Bangers';
-}
-
-.submit_form{
-    background-color: whitesmoke;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.first_text{
-    font-size: 30px;
-    padding: 20px;
-    font-weight: 600;
-    font-family:'Bangers';
-}
-
-.intro_contact_text{
-    padding: 0px 15px;
-}
-
-.first_title{
-    font-weight: 600;
-    font-size: 20px;
-    padding: 20px;
-}
-
-.map iframe{
-    width: 80%;
-    border-radius: 20px;
-    margin: 20px;
-}
-
-.contact_info{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 1rem;
-}
-
-.contact_info i {
-    border-radius: 20px;
-    background-color: whitesmoke;
-    padding: 5px;
-    margin-right: 20px;
-}
-
-.social_links{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    margin-top: 10px;
-}
-.social_list{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    list-style: none;
-    font-size: 22px;
-}
-
-.social_list i {
-    padding: 5px;
-    border-radius: 7px;
-    color: #1b1b1b;
-    border: solid 1px #1b1b1b;
-}
-
-.social_list i:hover{
-    background-color: whitesmoke;
-}
-
-.second_text{
-    font-weight: 600;
-    font-size: 1.2em;
-}
-
-form{
-    padding: 0 50px;
-    height: 80%;
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
-
-@media(min-width: 320px) {
-    form{
-        height: auto;
-        padding: 8px 10px;
-    }
-}
-
-.input_box{
-    width: 80%;
-    margin: 0 auto;
-    padding: 5px;
-}
-
-.input_box input{
-    outline: none;
-    padding: 5px 15px;
-    border: 1px solid black;
-    border-radius: 7px;
-}
-
-.btn_submit{
-    background-color:#e5ac57;
-    padding: 5px 15px;
-    border: 1px solid black;
-    border-radius: 7px;
-    cursor: pointer;
-    transition: all ease-in-out .3s;
-    font-family:'Patrick Hand';
-    font-weight: 600;
-    font-size: 1rem;
-    letter-spacing: 2px;
-}
-
-.btn_submit:hover{
-    transform: scale(1.1);
-}
-
-.input_text{
-    border-radius: 7px;
-    font-family: 'Patrick Hand', sans-serif;
-}
-
-@media(max-width: 800px){
-    .item{
-        grid-template-columns: 1fr;
-    }
-    .contact{
-        display: none;
-    }
-
-    .social_links_form{
-        display: none;
-    }
-}
-
-@media(max-width: 503px){
-    form{
-        padding: 0 10px;
-    }
-}
-/*  <----------End Contact Section--------->  */
-

@@ -1,10 +1,12 @@
 <main>
     <section class="form_login">
         <form id="form" [formGroup]="form" (ngSubmit)="onSubmit($event)">
-        <img src="../../assets/images/logo_planet.png" alt="Logo" class="logo">
-        <h1>PLANET SUPER HEROES</h1>
-        <h2>Login</h2>
-
+        <div class="title_login">
+            <img src="../../assets/images/logo_planet.png" alt="Logo" class="logo">
+            <h1>PLANET SUPER HEROES</h1>
+        </div>
+            <h2>Login</h2> 
+        
         <div class="form_container">
             <div class="form__field">
                 <input 
@@ -43,7 +45,7 @@
                 <button class="botom" type="submit" [disabled]="!form.valid"> Ingresar </button>
             </div>
             
-            <p class="link"><a routerLink="/register">No tenés una cuenta? Regístrate aquí!</a></p>
+            <p class="link">No tenés una cuenta? <a routerLink="/register">Regístrate aquí!</a></p>
             
             <a class="go_back" href="#">Volver al Inicio</a>
         </div>
