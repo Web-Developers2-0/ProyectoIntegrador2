@@ -190,17 +190,17 @@ Diseño interactivo: https://www.figma.com/proto/O3BzmmLej6K3qpF2dIefST/Planet-S
     </td>
     <td>
       <div align="center">
-        <a href="https://www.linkedin.com/" target="_blank" rel="author">
-          <img width="110" src=""/>
+        <a href="https://www.linkedin.com/in/gonzalo-olmedo-desweb/" target="_blank" rel="author">
+          <img width="110" src="https://media.licdn.com/dms/image/D4D35AQFuKsxS_SPjBg/profile-framedphoto-shrink_400_400/0/1695414844801?e=1716256800&v=beta&t=CLRbTMixe3wdZkuJxlUP8yVueBMwNmznhBGTwFLPZd0"/>
         </a>
-        <a href="https://www.linkedin.com/" target="_blank" rel="author">
+        <a href="https://www.linkedin.com/in/gonzalo-olmedo-desweb/" target="_blank" rel="author">
           <h4 style="margin-top: 1rem;">Gonzalo Abel Olmedo</h4>
           <h4 style="margin-top: 1rem;">Fullstack Develope</h4>
         </a>
-         <a href="https://github.com/" target="_blank">
+         <a href="https://github.com/gonzalo-olmedo" target="_blank">
             <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
           </a>
-          <a href="https://www.linkedin.com/" target="_blank">
+          <a href="https://www.linkedin.com/in/gonzalo-olmedo-desweb/" target="_blank">
             <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
           </a>
       </div>
