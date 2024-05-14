@@ -4,8 +4,12 @@
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
+  
 }
 
+body{
+  background-color: #9a1515;
+}
 
 a {
     text-decoration: none;
