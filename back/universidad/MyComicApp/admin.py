@@ -2,17 +2,18 @@ from django.contrib import admin
 from .models import User, Role, Category, Product, Order, OrderItem
 
 
+
+
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('id_users', 'first_name', 'last_name', 'email', 'address', 'image', 'display_orders')
+    list_display = ('id_users', 'first_name', 'last_name', 'email', 'address', 'image', 'display_orders', 'role')
 
     def display_orders(self, obj):
-        return ", ".join([str(order.id_order) for order in obj.orders.all()])
+        orders = obj.user_orders()  # Llama al método user_orders
+        return ", ".join([str(order.id_order) for order in orders])
 
     display_orders.short_description = 'Orders'
 
-admin.site.register(User,UserAdmin)
-
-
+admin.site.register(User, UserAdmin)
 
 class RoleAdmin(admin.ModelAdmin):
     list_display = ('id_role', 'name')
