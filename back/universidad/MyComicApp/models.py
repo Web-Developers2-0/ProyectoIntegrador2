@@ -16,7 +16,7 @@ class User(models.Model):
         verbose_name = 'User'
         verbose_name_plural = 'Users'
 
-    def __str_(self):
+    def __str__(self):
         return f'{self.first_name} {self.last_name}'
     
 class Role(models.Model):
@@ -28,7 +28,7 @@ class Role(models.Model):
         verbose_name = 'Role'
         verbose_name_plural = 'Roles'
 
-    def _str_(self):
+    def __str__(self):
         return self.name
     
 class Category(models.Model):
@@ -40,7 +40,7 @@ class Category(models.Model):
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'
         
-    def _str_(self):
+    def __str__(self):
         return self.name    
 
 
@@ -64,7 +64,7 @@ class Product(models.Model):
         verbose_name = 'Product'
         verbose_name_plural = 'Products'
         
-    def _str_(self):
+    def __str__(self):
         return self.name
 
 
@@ -83,7 +83,7 @@ class Order(models.Model):
         verbose_name = 'Order'
         verbose_name_plural = 'Orders'
 
-    def _str_(self):
+    def __str__(self):
         return f'Order {self.id_order}'
 
 class OrderItem(models.Model):
@@ -97,5 +97,5 @@ class OrderItem(models.Model):
         verbose_name = 'Order Item'
         verbose_name_plural = 'Order Items'
         
-    def _str_(self):
+    def __str__(self):
         return f'{self.quantity} of {self.product.name} in Order {self.order.id_order}'
