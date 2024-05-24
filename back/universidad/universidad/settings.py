@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-0e*4)xp%lp!2lc37aujo38n-14a@4wo81qqjsi-!atniye0jd$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']  # Lista de hosts permitidos
+
 
 
 # Application definition
@@ -38,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'MyComicApp',
+    'rest_framework',
+    'corsheaders',
+    'drf_yasg'
 ]
 
 MIDDLEWARE = [
@@ -48,8 +53,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
-
+CORS_ORIGIN_WHITELIST = ['http://localhost',]
+CORS_ALLOW_CREDENTIALS = True
 ROOT_URLCONF = 'universidad.urls'
 
 TEMPLATES = [
@@ -91,6 +99,8 @@ DATABASES = {
         }
     }
 }
+AUTH_USER_MODEL = 'MyComicApp.User'
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

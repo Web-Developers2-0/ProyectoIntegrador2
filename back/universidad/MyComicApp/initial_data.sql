@@ -177,19 +177,19 @@ VALUES
 INSERT INTO `planetSuperheroesDB`.`roles` (name)
 VALUES
 ('User'),
-('Admin'),
-('Superuser');
+('Vendedor'),
+('Admin');
 
-INSERT INTO `planetSuperheroesDB`.`users` (first_name, last_name, email, password, address, image, role_id) 
+
+
+ INSERT INTO `planetSuperheroesDB`.`mycomicapp_user` (email, first_name, last_name, password, address, image, date_joined, is_active, is_staff, role_id) 
 VALUES 
-('John', 'Doe', 'johndoe@mail.com', 'password', '123 Main St', 'john_doe.jpg', 2), 
-('Joan', 'Doe', 'joane@mail.com', 'password', '456 Main St', 'joan_doe.jpg', 1), 
-('Alice', 'Smith', 'alice@mail.com', 'password', '789 Elm St', 'alice_smith.jpg', 1), 
-('Bob', 'Johnson', 'bob@mail.com', 'password', '101 Oak St', 'bob_johnson.jpg', 1), 
-('Eva', 'Williams', 'eva@mail.com', 'password', '246 Pine St', 'eva_williams.jpg', 1), 
-('Michael', 'Brown', 'michael@mail.com', 'password', '555 Maple St', 'michael_brown.jpg', 1);
-
-
+('johndoe@mail.com', 'John', 'Doe', 'password', '123 Main St', 'john_doe.jpg', '2024-05-23 16:00:04', true, true, 2), 
+('joane@mail.com', 'Joan', 'Doe', 'password', '456 Main St', 'joan_doe.jpg', '2024-05-23 16:00:04', true, true, 1), 
+('alice@mail.com', 'Alice', 'Smith', 'password', '789 Elm St', 'alice_smith.jpg', '2024-05-23 16:00:04', true, true, 1), 
+('bob@mail.com', 'Bob', 'Johnson', 'password', '101 Oak St', 'bob_johnson.jpg', '2024-05-23 16:00:04', true, true, 1), 
+('eva@mail.com', 'Eva', 'Williams', 'password', '246 Pine St', 'eva_williams.jpg', '2024-05-23 16:00:04', true, true, 1), 
+('michael@mail.com', 'Michael', 'Brown', 'password', '555 Maple St', 'michael_brown.jpg', '2024-05-23 16:00:04', true, true, 1);
 
 
 INSERT INTO `planetSuperheroesDB`.`orders` (user_id, state, order_date, payment_method, shipping_method, payment_status, total_amount)
