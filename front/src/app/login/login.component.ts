@@ -24,7 +24,7 @@ export class LoginComponent {
   constructor(private formBuilder: FormBuilder, private router: Router, private loginService: LoginService) {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
@@ -39,17 +39,25 @@ export class LoginComponent {
   onSubmit(event: Event) {
     {
       event.preventDefault();
-
-      if (this.form.valid) {
-        this.loginService.methodlogin(this.form.value as LoginRequest);
-        localStorage.setItem('userData', JSON.stringify(this.form.value));
-        
-        this.router.navigate(['/dashboard']);
-        this.form.reset();
+      
+      if(this.form.valid) {
+        this.loginService.methodlogin({
+          email: this.form.get('email')?.value,
+          password: this.form.get('password')?.value
+        }).subscribe({
+          next:(response) => {
+            console.log(response);
+            this.router.navigate(['/dashboard']);
+          },
+          error:(error) => {
+            console.error(error);
+            alert('Error en la autenticación, intente nuevamente');
+          }
+        });
       } else {
-        alert('Fallo en el envió del formulario');
+        alert('Completa el formulario correctamente');
         this.form.markAllAsTouched();
       }
-      }
     }
+  }
 }
