@@ -1,12 +1,14 @@
 from django.urls import path, include
 from rest_framework import routers
 from MyComicApp import views
+from rest_framework_simplejwt.views import TokenVerifyView
 
 router = routers.DefaultRouter()
 
 urlpatterns = [
-    
-    path('register/', views.register, name='register'),
-    path('login/', views.login, name='login'),
+    path('register/', views.RegisterView.as_view(), name='register'),
+    path('login/', views.Login.as_view(), name='login'),  # Corregido para usar la clase Login
+    path('logout/', views.Logout.as_view(), name='logout'),
     path('', include(router.urls)),
+    path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
 ]
