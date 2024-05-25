@@ -26,9 +26,10 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     id = models.AutoField(primary_key=True) 
     email = models.EmailField(unique=True)
-    first_name = models.CharField(max_length=30, blank=True)
-    last_name = models.CharField(max_length=30, blank=True)
-    address = models.CharField(max_length=255, blank=True, null=True)
+    first_name = models.CharField(max_length=30, blank=False)
+    last_name = models.CharField(max_length=30, blank=False)
+    address = models.CharField(max_length=255, default='', blank=False)
+    phone = models.CharField(max_length=20, default='', blank=False)
     image = models.ImageField(upload_to='images/', blank=True, null=True)
     date_joined = models.DateTimeField(default=timezone.now)
     is_staff = models.BooleanField(default=False)

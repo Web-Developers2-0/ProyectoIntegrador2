@@ -59,7 +59,9 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 ]
-CORS_ORIGIN_WHITELIST = ['http://localhost',]
+
+CORS_ALLOWED_ORIGINS = ['http://localhost:4200',]
+# CORS_ORIGIN_WHITELIST = ['http://localhost',]
 CORS_ALLOW_CREDENTIALS = True
 ROOT_URLCONF = 'universidad.urls'
 
@@ -94,7 +96,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'planetSuperheroesDB',
         'USER': 'root',
-        'PASSWORD': '123456789',
+        'PASSWORD': 'admipaula5!!',
         'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {
