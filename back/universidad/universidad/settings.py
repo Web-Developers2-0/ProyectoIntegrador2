@@ -59,7 +59,8 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 ]
-CORS_ORIGIN_WHITELIST = ['http://localhost',]
+CORS_ORIGIN_WHITELIST = ['http://localhost:4200']
+
 CORS_ALLOW_CREDENTIALS = True
 ROOT_URLCONF = 'universidad.urls'
 
