@@ -1,7 +1,7 @@
 <!-- Lo que renderizo si el usuario se desloguea desde el dashboard -->
-<section>
+<section *ngIf="isAuthenticated">
   <div class="logout_dashboard">
-    <p *ngIf="isAuthenticated">*Es necesario iniciar sesión para ver el historial de compras, por favor inicie sesión desde la barra de navegación.</p>
+    <p>*Es necesario iniciar sesión para ver el historial de compras, por favor inicie sesión desde la barra de navegación.</p>
   </div>
 </section>
 
@@ -14,10 +14,11 @@
                 <img src="../../assets/images/user.png" alt="usuario">
             </div>
             <!-- <span>Nombre de usuario</span> -->
-            <span>{{ userEmail }}</span>
+            <span>{{ user.email }}</span>
+            <span>{{ user.first_name }}</span>
         </div>
         
-        <button class="logout_btn" (click)="isAuthenticated = !isAuthenticated">
+        <button class="logout_btn" (click)="logout()">
           cerrar sesión
         </button>
     </div>
