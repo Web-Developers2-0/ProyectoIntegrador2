@@ -18,7 +18,7 @@ export class LoginService {
 
   methodlogin(credentials: LoginRequest):Observable<any>{
     
-    return this.http.post<any>('https://reqres.in/api/login', credentials).pipe(
+    return this.http.post<any>('http://localhost:8000/api/login/', credentials).pipe(
       
     tap((userData) => {
         localStorage.setItem('token', userData.token);
