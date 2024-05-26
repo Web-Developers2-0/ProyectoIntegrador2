@@ -6,7 +6,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.generics import GenericAPIView
 from rest_framework.generics import RetrieveUpdateAPIView
 from django.contrib.auth import authenticate
-from .serializers import RegisterSerializer, UserSerializer, CustomTokenObtainPairSerializer
+from .serializers import UserSerializer, CustomTokenObtainPairSerializer
 from .models import User
 
 from MyComicApp.serializers import (CustomTokenObtainPairSerializer, UserSerializer)
@@ -19,7 +19,7 @@ class RegisterView(APIView):
     permission_classes = [AllowAny]
     
     def post(self, request, *args, **kwargs):
-        serializer = RegisterSerializer(data=request.data)
+        serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
