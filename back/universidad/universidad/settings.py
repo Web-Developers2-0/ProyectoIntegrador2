@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
+    "api"
 ]
 
 MIDDLEWARE = [
@@ -58,13 +59,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    # 'rest_framework_simplejwt.authentication.JWTAuthentication',
+    'rest_framework_simplejwt.authentication.JWTAuthentication',
 ]
 CORS_ORIGIN_WHITELIST = ['http://localhost:4200']
 
 
 CORS_ALLOWED_ORIGINS = ['http://localhost:4200',]
-# CORS_ORIGIN_WHITELIST = ['http://localhost',]
+CORS_ORIGIN_WHITELIST = ['http://localhost',]
 CORS_ALLOW_CREDENTIALS = True
 ROOT_URLCONF = 'universidad.urls'
 
@@ -99,7 +100,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'planetSuperheroesDB',
         'USER': 'root',
-        'PASSWORD': 'admipaula5!!',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {
