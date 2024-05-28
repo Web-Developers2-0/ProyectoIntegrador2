@@ -60,7 +60,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     # 'rest_framework_simplejwt.authentication.JWTAuthentication',
 ]
-CORS_ORIGIN_WHITELIST = ['http://localhost:4200']
+#CORS_ORIGIN_WHITELIST = ['http://localhost:4200']
 
 
 CORS_ALLOWED_ORIGINS = ['http://localhost:4200',]
@@ -99,7 +99,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'planetSuperheroesDB',
         'USER': 'root',
-        'PASSWORD': 'admipaula5!!',
+        'PASSWORD': '123456789',
         'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {

@@ -179,4 +179,3 @@ export class ProductServiceService {
   return this.productList;
   }
 }
-

@@ -1,7 +1,10 @@
 import os
 from django.db import connection
 from django.conf import settings
+from django.db.models.signals import post_migrate
+from django.dispatch import receiver
 
+@receiver(post_migrate)
 def load_data_script(sender, **kwargs):
     sql_file_path = os.path.join(settings.BASE_DIR, 'MyComicApp', 'initial_data.sql')
 
@@ -12,24 +15,35 @@ def load_data_script(sender, **kwargs):
     # Lista de tablas afectadas por el script
     affected_tables = ['categories', 'products', 'roles', 'mycomicapp_user', 'orders', 'order_items']
 
-    # Verificar si ya existen datos en alguna de las tablas
+    # Verificar y cargar datos en cada tabla individualmente
     with connection.cursor() as cursor:
         for table in affected_tables:
             try:
                 cursor.execute(f"SELECT COUNT(*) FROM {table}")
                 count = cursor.fetchone()[0]
-                if count > 0:
-                    print(f'Data already exists in table {table}. Skipping data loading.')
-                    return
+                if count == 0:
+                    # Leer datos específicos para la tabla
+                    with open(sql_file_path, 'r') as file:
+                        sql = file.read()
+                        # Extraer solo los datos relevantes para la tabla actual
+                        table_data = extract_table_data(sql, table)
+                        if table_data:
+                            cursor.execute(table_data)
+                            print(f'Successfully loaded data for table {table}')
             except Exception as e:
                 print(f"Skipping table {table} because it does not exist yet: {e}")
                 continue
 
-    # Si no se encontraron datos en ninguna de las tablas, cargar los datos desde el archivo SQL
-    with open(sql_file_path, 'r') as file:
-        sql = file.read()
+def extract_table_data(sql, table):
+    """
+    Función auxiliar para extraer los datos de la tabla específica desde el archivo SQL.
+    """
+    # Dividir el SQL en sentencias individuales
+    sql_statements = sql.split(';')
+    table_data = []
 
-    with connection.cursor() as cursor:
-        cursor.execute(sql)
+    for statement in sql_statements:
+        if table in statement:
+            table_data.append(statement.strip())
 
-    print('Successfully loaded initial data')
+    return ';\n'.join(table_data) + ';' if table_data else None
