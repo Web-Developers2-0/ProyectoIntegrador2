@@ -40,6 +40,8 @@ header{
   color: #fcd69e;
   padding: 8px;
   margin-left: 1rem;
+  padding: 0 10px;
+  flex: 1;
 }
 
 .nav__links li a {
@@ -69,38 +71,64 @@ label #cancel{
     display: none;
 }
 
+/* Estilos para dispositivos móviles */
 @media (max-width: 860px) {
-    label #btn-nav{
+    .nav__links {
+        display: none;
+        padding: 0;        
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    #check {
+        display: none;
+    }
+
+    label #btn-nav,
+    label #cancel {
+        color: #fcd69e;
+        font-size: 30px;
+        line-height: 80px;
+        cursor: pointer;
         display: block;
     }
-    nav ul{        
+
+    nav ul {
         width: 100%;
-        height:80vh;
         background: #1e1e1e;
+        position: absolute;
         top: 80px;
         left: -100%;
         text-align: center;
         transition: all .5s;
-        position: absolute;
         z-index: 100;
         display: flex;
         flex-direction: column;
     }
-    nav ul li{
+
+    nav ul li {
         display: block;
         margin: 20px 0;
         line-height: 30px;
     }
-    nav ul li a{
+
+    nav ul li a {
         font-size: 20px;
+        color: #fcd69e;
     }
-    #check:checked ~ ul{
-        left: 0; 
+
+    #check:checked ~ ul {
+        left: 0;
     }
+
     #check:checked ~ label #btn-nav {
         display: none;
     }
-    #check:checked ~ label #cancel{
+
+    #check:checked ~ label #cancel {
         display: block;
     }
 }

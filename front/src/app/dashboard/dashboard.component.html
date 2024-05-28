@@ -1,4 +1,11 @@
-<p *ngIf="isAuthenticated">Usuario no autenticado</p>
+<!-- Lo que renderizo si el usuario se desloguea desde el dashboard -->
+<section *ngIf="isAuthenticated">
+  <div class="logout_dashboard">
+    <p>*Es necesario iniciar sesión para ver el historial de compras, por favor inicie sesión desde la barra de navegación.</p>
+  </div>
+</section>
+
+<!-- Lo que renderizo si el usuario de logueo exitosamente -->
 <main>
 <section class="table_section" *ngIf="!isAuthenticated">
     <div class="user_banner">
@@ -6,17 +13,19 @@
             <div class="user_img">
                 <img src="../../assets/images/user.png" alt="usuario">
             </div>
-            <span>Nombre de usuario</span>
+            <!-- <span>Nombre de usuario</span> -->
+            <span>{{ user.email }}</span>
+            <span>{{ user.first_name }}</span>
         </div>
         
-        <button class="logout_btn">
-            cerrar sesión
+        <button class="logout_btn" (click)="logout()">
+          cerrar sesión
         </button>
     </div>
     <div class="table_title">
         <h3>Historial de compras</h3>
     </div>
-    <div class="table_container">
+    <div class="table_container" *ngIf="dashboardData && dashboardData.length > 0">
         <table class="table">
             <thead class="thead">
                 <tr class="tr">
@@ -30,34 +39,19 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td scope="row">#12345</td>
-                <td>11/05/2024</td>
-                <td>IMG</td>
-                <td>1</td>
-                <td>$2000</td>
-                <td>$2000</td>
-                <td style="background-color: blueviolet; border-radius: 20px; text-align: center; font-weight: 600; color: white" >En proceso</td>
+              <tr *ngFor="let item of dashboardData">
+                <td scope="row">{{ item.id }}</td>
+                <td>{{ item.date }}</td>
+                <td><img src="../../assets/images/{{ item.product_img }}" alt="comic"></td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.total }}</td>
+                <td><span [ngClass]="{
+                    'completed': item.status === 'Completado',
+                    'pending': item.status === 'En proceso',
+                    'cancelled': item.status === 'Cancelado'
+                }">{{ item.status }}</span></td>
               </tr>
-              <tr>
-                <td scope="row">#34564</td>
-                <td>09/05/2024</td>
-                <td>IMG</td>
-                <td>1</td>
-                <td>$2000</td>
-                <td>$2000</td>
-                <td style="background-color: rgb(58, 126, 58); border-radius: 20px; text-align: center; font-weight: 600; color: white">Completado</td>
-              </tr>
-              <tr>
-                <td scope="row">#76543</td>
-                <td>04/05/2024</td>
-                <td>IMG</td>
-                <td>2</td>
-                <td>$2000</td>
-                <td>$4000</td>
-                <td style="background-color: rgb(58, 126, 58); border-radius: 20px; text-align: center; font-weight: 600; color: white">Completado</td>
-              </tr>
-              
             </tbody>
           </table>
     </div>
