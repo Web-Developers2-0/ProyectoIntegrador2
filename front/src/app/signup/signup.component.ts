@@ -19,6 +19,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 export class SignupComponent {
   // Propiedades para los valores del formulario
   userName: string = '';
+  userSurname: string = '';
   email: string = '';
   phone: string = '';
   address: string = '';
@@ -32,6 +33,7 @@ export class SignupComponent {
     // Inicialización del formulario en el constructor
     this.signupForm = this.formBuilder.group({
       userName: ['', [Validators.required]],
+      userSurname: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
       address: ['', Validators.required],
@@ -111,6 +113,24 @@ export class SignupComponent {
       return false;
     } else {
       this.showSuccess('user_name');
+      return true;
+    }
+  }
+
+  // Función para verificar el nombre de usuario
+  checkUserSurname(): boolean {
+    const min = 4;
+    const max = 16;
+    const usersurname = this.userSurname.trim();
+
+    if (this.isEmpty(usersurname)) {
+      this.showError('user_surname', "*Campo obligatorio");
+      return false;
+    } else if (!this.isBetween(usersurname.length, min, max)) {
+      this.showError('user_surname', `El apellido debe tener entre ${min} y ${max} caracteres`);
+      return false;
+    } else {
+      this.showSuccess('user_surname');
       return true;
     }
   }
