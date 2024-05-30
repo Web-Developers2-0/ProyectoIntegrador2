@@ -1,5 +1,9 @@
 from rest_framework import serializers
+<<<<<<< HEAD
+from .models import User,Product, Category
+=======
 from .models import User
+>>>>>>> 0a2af0ad20f23b59341d2bd54b46af390e136de7
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 
@@ -43,3 +47,12 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['email'] = user.email
         return token
 
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'
+        
+class ProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = '__all__'
