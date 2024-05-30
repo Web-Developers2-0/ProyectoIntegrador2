@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User
+from .models import User, Product
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 
@@ -35,13 +35,6 @@ class UserSerializer(serializers.ModelSerializer):
         
         instance.save()
         return instance
-""" 
-class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
-    @classmethod
-    def get_token(cls, user):
-        token = super().get_token(user)
-        token['email'] = user.email
-        return token """
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
@@ -54,3 +47,10 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         data = super().validate(attrs)
         data.update({'user': UserSerializer(self.user).data})
         return data
+
+
+class ProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = '__all__'
+        

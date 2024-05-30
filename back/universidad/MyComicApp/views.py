@@ -6,13 +6,16 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.generics import GenericAPIView
 from rest_framework.generics import RetrieveUpdateAPIView
 from django.contrib.auth import authenticate
-from .serializers import UserSerializer, CustomTokenObtainPairSerializer
+from .serializers import UserSerializer, CustomTokenObtainPairSerializer, ProductSerializer
 from .models import User
 
 from MyComicApp.serializers import (CustomTokenObtainPairSerializer, UserSerializer)
-from MyComicApp.models import User
+from MyComicApp.models import User ,Product
 from rest_framework.permissions import AllowAny
 from rest_framework.permissions import IsAuthenticated
+
+
+from rest_framework.viewsets import ModelViewSet
 
 
 class RegisterView(APIView):
@@ -25,27 +28,7 @@ class RegisterView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-""" class Login(TokenObtainPairView):
-    serializer_class = CustomTokenObtainPairSerializer
-    
-    def post(self, request, *args, **kwargs):
-        email = request.data.get('email', '')
-        password = request.data.get('password', '')
-        user = authenticate(email=email, password=password)
-        
-        if user:
-            login_serializer = self.serializer_class(data=request.data)
-            if login_serializer.is_valid():
-                user_serializer = UserSerializer(user)
-                return Response({
-                    'token': login_serializer.validated_data['access'],
-                    'refresh-token': login_serializer.validated_data['refresh'],
-                    'user': user_serializer.data,
-                    'message': 'Inicio de Sesión Exitoso'
-                }, status=status.HTTP_200_OK)
-            return Response({'error': 'Contraseña o nombre de usuario incorrectos'}, status=status.HTTP_400_BAD_REQUEST)
-        return Response({'error': 'Contraseña o nombre de usuario incorrectos'}, status=status.HTTP_400_BAD_REQUEST)
- """
+
 class Login(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
 
@@ -105,3 +88,7 @@ class UpdateUserView(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
+
+class ProductViewSet(ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer

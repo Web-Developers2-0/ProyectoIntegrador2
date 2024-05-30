@@ -24,7 +24,19 @@
           routerLinkActive="active"
           >¿QUIENES SOMOS?</a>
           </li>
-          
+
+
+          <li class="nav-item"
+          >
+           <a class="nav-link"
+           *ngIf="isLoggedIn"
+           routerLink="/dashboard"
+           routerLinkActive="active"
+           >MI PERFIL</a>
+           </li>
+           
+
+
           <li class="nav-item"
           >
           <a class="nav-link"
