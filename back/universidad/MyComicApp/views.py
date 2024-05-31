@@ -1,4 +1,4 @@
-from rest_framework import status
+from rest_framework import status,permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -6,16 +6,24 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.generics import GenericAPIView
 from rest_framework.generics import RetrieveUpdateAPIView
 from django.contrib.auth import authenticate
-from .serializers import UserSerializer, CustomTokenObtainPairSerializer, ProductSerializer
-from .models import User
+from .serializers import UserSerializer, CustomTokenObtainPairSerializer, ProductSerializer,OrderCreateSerializer, OrderSerializer
+from .models import User,Order
+from django.utils import timezone
 
-from MyComicApp.serializers import (CustomTokenObtainPairSerializer, UserSerializer)
+from MyComicApp.serializers import (CustomTokenObtainPairSerializer, UserSerializer,LogoutSerializer)
 from MyComicApp.models import User ,Product
+
 from rest_framework.permissions import AllowAny
 from rest_framework.permissions import IsAuthenticated
 
+from rest_framework.generics import ListAPIView
+
 
 from rest_framework.viewsets import ModelViewSet
+
+
+
+
 
 
 class RegisterView(APIView):
@@ -53,7 +61,7 @@ class Login(TokenObtainPairView):
  
 class Logout(GenericAPIView):
     permission_classes = [IsAuthenticated]
-    
+    serializer_class = LogoutSerializer
     def post(self, request, *args, **kwargs):
         user = User.objects.filter(id=request.data.get('user', 0))
         if user.exists():
@@ -92,3 +100,26 @@ class UpdateUserView(APIView):
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    permission_classes = [AllowAny]
+    
+ 
+#CREAR ORDENES CON USUARIO AUTENTICADO 
+class CreateOrderView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, *args, **kwargs):
+        serializer = OrderCreateSerializer(data=request.data, context={'request': request})
+        if serializer.is_valid():
+            order = serializer.save(id_user=request.user)
+            return Response(OrderSerializer(order).data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    
+#VER LISTA DE ORDENES DE USUARIO AUTENTICADO      
+class UserOrdersView(ListAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = OrderSerializer
+
+    def get_queryset(self):
+        user_id = self.request.user.id
+        return Order.objects.filter(id_user=user_id)

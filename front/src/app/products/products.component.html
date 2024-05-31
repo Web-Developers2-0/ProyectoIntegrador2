@@ -1,60 +1,58 @@
-<h1> Nuestros Productos</h1>
+<h1 class="text-center">Nuestros Productos</h1>
 
 <div class="card_section-titulo">
-  <a href="#" (click)="updateCategory('marvel'); $event.preventDefault() "><h2 class="card_section-titulo1">Marvel Comics</h2></a>
-  <a href="#" (click)="updateCategory('dc'); $event.preventDefault()"><h2 class="card_section-titulo2"> DC Comics</h2></a>
+  <a href="#" (click)="updateCategory('marvel'); $event.preventDefault()" class="text-decoration-none">
+    <h2 class="card_section-titulo1">Marvel Comics</h2>
+  </a>
+  <a href="#" (click)="updateCategory('dc'); $event.preventDefault()" class="text-decoration-none">
+    <h2 class="card_section-titulo2">DC Comics</h2>
+  </a>
 </div>
 
-<div id="card_section-root">
-  
-  <ng-container *ngIf="selectedCategory === 'marvel'">
+<!-- Botón del carrito con contador -->
+<button class="btn btn-primary position-fixed top-0 end-0 m-3" (click)="toggleCart()">
+  Carrito de Compras ({{ getTotalProducts() }})
+</button>
 
-    <div *ngFor="let product of productList" class="card">
-      <img [src]="product.image" [alt]="product.description">
-      <div class="card-content">
-        <h3>${{ product.price }}</h3>
-        <h4>{{ product.description }}</h4>
-        <button ><a class="nav-link" routerLink="/detailsprod" routerLinkActive="active">Ver más</a></button>
-        <div class="purchase-info">
-          <input type="number" min="0" value="1">
-        <!--   <button type="button" class="btn-shop">
-              Agregar <i class="fa-solid fa-cart-plus"></i>
-          </button>
-          <button type="button" class="btn-shop">
-              Comprar
-          </button> -->
-      </div></div>
+<!-- Sección de productos seleccionados -->
+<div *ngIf="cartOpen" class="cart-overlay">
+  <div class="cart">
+    <h2 class="text-center">Carrito de Compras</h2>
+    <ul class="list-group">
+      <li *ngFor="let product of selectedProducts" class="list-group-item d-flex justify-content-between align-items-center">
+        <div class="selected-product-info d-flex align-items-center">
+          <img [src]="product.image" [alt]="product.description" class="selected-product-image me-3">
+          <div class="selected-product-details">
+            <p class="mb-0"><strong>{{ product.description }}</strong></p>
+            <p class="mb-0">Precio: ${{ product.price }}</p>
+            <div class="quantity-controls d-flex align-items-center">
+              <button class="btn btn-sm btn-outline-secondary me-2" (click)="decreaseQuantity(product)">-</button>
+              <input type="number" [(ngModel)]="product.quantity" class="form-control form-control-sm quantity-input" readonly>
+              <button class="btn btn-sm btn-outline-secondary ms-2" (click)="increaseQuantity(product)">+</button>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-sm btn-danger" (click)="removeProduct(product)">Eliminar</button>
+      </li>
+    </ul>
+    <div class="mt-4 text-end">
+      <button class="btn btn-success" (click)="checkout()">Comprar</button>
     </div>
- 
-  </ng-container>
-  <ng-container *ngIf="selectedCategory === 'dc'">
+  </div>
+</div>
 
-    <div *ngFor="let product of productList" class="card">
-      <img [src]="product.image" [alt]="product.description">
-      <div class="card-content">
-        <h3>${{ product.price }}</h3>
-        <h4>{{ product.description }}</h4>
-        <button><a class="nav-link" routerLink="/detailsprod" routerLinkActive="active">Ver más</a></button>
-      
-        <div class="purchase-info">
-          <input type="number" min="0" value="1">
-        <!--   <button type="button" class="btn-shop">
-              Agregar <i class="fa-solid fa-cart-plus"></i>
-          </button>
-          <button type="button" class="btn-shop">
-              Comprar
-          </button> -->
+<!-- Sección de productos disponibles -->
+<div id="card_section-root" class="d-flex flex-wrap justify-content-center">
+  <ng-container *ngIf="selectedCategory === 'marvel' || selectedCategory === 'dc'">
+    <div *ngFor="let product of productList" class="card m-2" style="width: 18rem;">
+      <img [src]="product.image" [alt]="product.description" class="card-img-top align-self-center">
+      <div class="card-body">
+        <h5 class="card-title">${{ product.price }}</h5>
+        <p class="card-text text-truncate">{{ product.description }}</p>
+        <div class="purchase-info mt-3">
+          <button class="btn btn-primary mt-2" (click)="addProduct(product)">Agregar al carrito</button>
+        </div>
       </div>
     </div>
-    </div>
-
   </ng-container>
 </div>
-
-   
-
-
-
-  
-
-  
