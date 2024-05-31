@@ -1,5 +1,7 @@
 <h1> Nuestros Productos</h1>
 
+<app-cart></app-cart>
+
 <div class="card_section-titulo">
   <a href="#" (click)="updateCategory('marvel'); $event.preventDefault() "><h2 class="card_section-titulo1">Marvel Comics</h2></a>
   <a href="#" (click)="updateCategory('dc'); $event.preventDefault()"><h2 class="card_section-titulo2"> DC Comics</h2></a>
@@ -27,6 +29,7 @@
         <h3>${{ product.price }}</h3>
         <h4>{{ product.description }}</h4>
         <button><a class="nav-link" routerLink="/detailsprod" routerLinkActive="active">Ver más</a></button>
+        <button (click)="addToCart(product)">Comprar</button>
       </div>
     </div>
 

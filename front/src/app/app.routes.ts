@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SignupComponent } from './signup/signup.component';
 import { ContactComponent } from './contact/contact.component';
 import { DetailsprodComponent} from './detailsprod/detailsprod.component';
+import { CartComponent} from './cart/cart.component';
 
 export const routes: Routes = [
 
@@ -22,7 +23,7 @@ export const routes: Routes = [
 
     {path:"", redirectTo:"/app-products", pathMatch:"full"},
     {path:'app-products', component:ProductsComponent},
-   
+    {path:'cart', component:CartComponent}, 
 
     { path: 'register', component: SignupComponent}
 ];

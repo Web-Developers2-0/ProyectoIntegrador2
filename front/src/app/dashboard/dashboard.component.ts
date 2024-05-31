@@ -23,6 +23,10 @@ export class DashboardComponent implements OnInit {
     id: 0,
     email: '',
     first_name: '',
+    last_name: '',
+    phone: '',
+    address: '',
+    password: ''
   };
  
   constructor(private loginService: LoginService, private router: Router) {

@@ -1,51 +1,56 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from '../services/user/user.service'; 
+import { User } from '../services/user/user';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
-import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
-  standalone: true,  
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    RouterLink,
-    RouterLinkActive
-  ],
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule]
 })
 export class SignupComponent {
-  // Propiedades para los valores del formulario
-  userName: string = '';
-  userSurname: string = '';
-  email: string = '';
-  phone: string = '';
-  address: string = '';
-  password: string = '';
-  confirmPassword: string = '';
+  signupForm: FormGroup;  
 
-  // Declaración del formulario
-  signupForm: FormGroup;
-
-  constructor(private formBuilder: FormBuilder) { 
-    // Inicialización del formulario en el constructor
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService,  // Inyecta el UserService
+    private router: Router
+  ) {
     this.signupForm = this.formBuilder.group({
-      userName: ['', [Validators.required]],
-      userSurname: ['', [Validators.required]],
+      userName: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(16)]],
+      userSurname: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(16)]],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required],
-      address: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      address: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword: ['', Validators.required]
+      confirmPassword: ['', [Validators.required]]
+    }, {
+      validators: this.passwordMatchValidator
     });
   }
 
-  
+  // Validacion de password
+  passwordMatchValidator(form: FormGroup) {
+    const password = form.get('password');
+    const confirmPassword = form.get('confirmPassword');
+    
+    // Verificar si confirmPassword no es null antes de llamar a setErrors
+    if (password && confirmPassword) {
+        if (password.value !== confirmPassword.value) {
+            confirmPassword.setErrors({ mismatch: true });
+        } else {
+            confirmPassword.setErrors(null);
+        }
+    }
+  }
+
   // Función para verificar si un campo está vacío
   isEmpty(value: string): boolean {
-    return value === "";
+    return value === '';
   }
 
   // Función para verificar si un valor está entre un rango de longitud
@@ -61,7 +66,7 @@ export class SignupComponent {
 
   // Función para verificar si el correo electrónico es válido
   isEmailOk(email: string): boolean {
-    const re =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+    const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
     return re.test(email);
   }
 
@@ -76,9 +81,9 @@ export class SignupComponent {
     const inputElement = document.getElementById(inputId);
     const formField = inputElement?.parentElement;
     if (formField) {
-      formField.classList.remove("success");
-      formField.classList.add("error");
-      const error = formField.querySelector("small");
+      formField.classList.remove('success');
+      formField.classList.add('error');
+      const error = formField.querySelector('small');
       if (error) {
         error.textContent = message;
       }
@@ -90,11 +95,11 @@ export class SignupComponent {
     const inputElement = document.getElementById(inputId);
     const formField = inputElement?.parentElement;
     if (formField) {
-      formField.classList.remove("error");
-      formField.classList.add("success");
-      const error = formField.querySelector("small");
+      formField.classList.remove('error');
+      formField.classList.add('success');
+      const error = formField.querySelector('small');
       if (error) {
-        error.textContent = "";
+        error.textContent = '';
       }
     }
   }
@@ -103,47 +108,47 @@ export class SignupComponent {
   checkUserName(): boolean {
     const min = 4;
     const max = 16;
-    const username = this.userName.trim();
+    const username = this.signupForm.get('userName')?.value.trim();
 
     if (this.isEmpty(username)) {
-      this.showError('user_name', "*Campo obligatorio");
+      this.showError('userName', '*Campo obligatorio');
       return false;
     } else if (!this.isBetween(username.length, min, max)) {
-      this.showError('user_name', `El nombre debe tener entre ${min} y ${max} caracteres`);
+      this.showError('userName', `El nombre debe tener entre ${min} y ${max} caracteres`);
       return false;
     } else {
-      this.showSuccess('user_name');
+      this.showSuccess('userName');
       return true;
     }
   }
 
-  // Función para verificar el nombre de usuario
+  // Función para verificar el apellido de usuario
   checkUserSurname(): boolean {
     const min = 4;
     const max = 16;
-    const usersurname = this.userSurname.trim();
+    const usersurname = this.signupForm.get('userSurname')?.value.trim();
 
     if (this.isEmpty(usersurname)) {
-      this.showError('user_surname', "*Campo obligatorio");
+      this.showError('userSurname', '*Campo obligatorio');
       return false;
     } else if (!this.isBetween(usersurname.length, min, max)) {
-      this.showError('user_surname', `El apellido debe tener entre ${min} y ${max} caracteres`);
+      this.showError('userSurname', `El apellido debe tener entre ${min} y ${max} caracteres`);
       return false;
     } else {
-      this.showSuccess('user_surname');
+      this.showSuccess('userSurname');
       return true;
     }
   }
 
   // Función para verificar la contraseña
   checkPassword(): boolean {
-    const password = this.password.trim();
+    const password = this.signupForm.get('password')?.value.trim();
 
     if (this.isEmpty(password)) {
-      this.showError('password', "*Contraseña obligatoria");
+      this.showError('password', '*Contraseña obligatoria');
       return false;
     } else if (!this.isPasswordOk(password)) {
-      this.showError('password', "Debe tener por lo menos 8 caracteres, mayúscula, minúscula y símbolos");
+      this.showError('password', 'Debe tener por lo menos 8 caracteres, mayúscula, minúscula y símbolos');
       return false;
     } else {
       this.showSuccess('password');
@@ -153,13 +158,13 @@ export class SignupComponent {
 
   // Función para verificar el correo electrónico
   checkEmail(): boolean {
-    const emailValue = this.email.trim();
+    const emailValue = this.signupForm.get('email')?.value.trim();
 
     if (this.isEmpty(emailValue)) {
-      this.showError('email', "*Mail obligatorio");
+      this.showError('email', '*Mail obligatorio');
       return false;
     } else if (!this.isEmailOk(emailValue)) {
-      this.showError('email', "Mail no válido, debe contener un @ y un punto");
+      this.showError('email', 'Mail no válido, debe contener un @ y un punto');
       return false;
     } else {
       this.showSuccess('email');
@@ -169,52 +174,76 @@ export class SignupComponent {
 
   // Función para verificar el teléfono
   checkPhone(): boolean {
-    const phoneValue = this.phone.trim();
+    const phoneValue = this.signupForm.get('phone')?.value.trim();
 
     if (!this.isPhoneOk(phoneValue)) {
-      this.showError('phone', "Teléfono no válido, debe contener 10 caracteres");
+      this.showError('phone', 'Teléfono no válido, debe contener 10 caracteres');
       return false;
     } else {
       this.showSuccess('phone');
       return true;
     }
   }
-  
+
   // Función para verificar si las contraseñas coinciden
   checkPasswordsMatch(): boolean {
-    if (this.password !== this.confirmPassword) {
-      this.showError('password2', "Las contraseñas no coinciden");
+    const password = this.signupForm.get('password')?.value.trim();
+    const confirmPassword = this.signupForm.get('confirmPassword')?.value.trim();
+
+    if (password !== confirmPassword) {
+      this.showError('confirmPassword', 'Las contraseñas no coinciden');
       return false;
     } else {
-      this.showSuccess('password2');
+      this.showSuccess('confirmPassword');
       return true;
     }
   }
   
   // Función para verificar la dirección
   checkAddress(): boolean {
-    if (this.isEmpty(this.address)) {
-      this.showError('address', "*Dirección requerida");
+    const address = this.signupForm.get('address')?.value.trim();
+
+    if (this.isEmpty(address)) {
+      this.showError('address', '*Dirección requerida');
       return false;
     } else {
       this.showSuccess('address');
       return true;
     }
   }
-  
+
   // Función para manejar el envío del formulario
   onSubmit(): void {
     const isValidUsername = this.checkUserName(); 
+    const isValidSurname = this.checkUserSurname(); 
     const isValidPassword = this.checkPassword(); 
     const isValidEmail = this.checkEmail(); 
     const isValidPhone = this.checkPhone(); 
     const isValidPasswordMatch = this.checkPasswordsMatch();
     const isValidAddress = this.checkAddress(); 
   
-    if (isValidUsername && isValidPassword && isValidEmail && isValidPhone && isValidPasswordMatch && isValidAddress) {
-      // Aquí puedes colocar la lógica para manejar el envío del formulario
-      console.log('Formulario enviado');
-      // window.location.href = '../index.html';
+    if (isValidUsername && isValidSurname && isValidPassword && isValidEmail && isValidPhone && isValidPasswordMatch && isValidAddress) {
+      const formValues = this.signupForm.value;
+      const user: User = {
+        email: formValues.email,
+        first_name: formValues.userName,
+        last_name: formValues.userSurname,
+        phone: formValues.phone,
+        address: formValues.address,
+        password: formValues.password,
+        confirmPassword: formValues.confirmPassword  // Este campo no se enviará al backend
+      };
+
+      this.userService.registerUser(user).subscribe(
+        response => {
+          console.log('Signup successful', response);
+          this.router.navigate(['/login']);
+        },
+        error => {
+          console.error('Error during signup', error);
+          // Aquí puedes mostrar un mensaje de error al usuario si el registro falla
+        }
+      );
     }
   }
 }
