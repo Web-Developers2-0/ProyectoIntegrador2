@@ -45,4 +45,8 @@ export class DashboardComponent implements OnInit {
     this.isAuthenticated = false;
     this.router.navigate(['/']);
   }
+
+  goToProfile() {
+    this.router.navigate(['/profile']);
+  }
 } 

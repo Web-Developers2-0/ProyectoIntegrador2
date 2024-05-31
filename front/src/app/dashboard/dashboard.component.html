@@ -11,7 +11,11 @@
     <div class="user_banner">
         <div class="user_data">
             <div class="user_img">
-                <img src="../../assets/images/user.png" alt="usuario">
+                <img 
+                  src="../../assets/images/user.png" 
+                  alt="usuario"
+                  (click)="goToProfile()"
+                />
             </div>
             <!-- <span>Nombre de usuario</span> -->
             <span>{{ user.email }}</span>

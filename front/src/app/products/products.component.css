@@ -63,7 +63,7 @@ a {
     padding: 25px;
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
-    /transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);/
+    /*transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);*/
     background-color: #0a0000;
     border-radius: 20px;
   }
@@ -180,11 +180,11 @@ a {
     background-color:#9a1515 ;
   }
   
-  .card-content {
-    /transform: rotateY(-360deg);/
+  /* .card-content {
+    transform: rotateY(-360deg);
     text-align: center;
-  }
-  /*
+  } */
+
   
   
   /* TABLET */
@@ -215,7 +215,7 @@ a {
       padding: 25px;
       border-bottom-left-radius: 7px;
       border-bottom-right-radius: 7px;
-      /transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);/
+      /* transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1); */
       background-color: #0a0000;
     }
   
@@ -260,7 +260,7 @@ a {
       padding: 0px;
       border-bottom-left-radius: 7px;
       border-bottom-right-radius: 7px;
-      transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);/
+      /* transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1); */
       background-color: #0a0000;
     }
     #card_section-titulo {
