@@ -1,4 +1,4 @@
-from rest_framework import status
+from rest_framework import status,permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -6,7 +6,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.generics import GenericAPIView
 from rest_framework.generics import RetrieveUpdateAPIView
 from django.contrib.auth import authenticate
-from .serializers import UserSerializer, CustomTokenObtainPairSerializer, ProductSerializer, CategorySerializer,OrderCreateSerializer, OrderSerializer
+from .serializers import UserSerializer, CustomTokenObtainPairSerializer, ProductSerializer, CategorySerializer,OrderCreateSerializer, OrderSerializer,LogoutSerializer
 from .models import User, Product, Category, Order
 from rest_framework.generics import ListAPIView
 from MyComicApp.serializers import (CustomTokenObtainPairSerializer, UserSerializer)
@@ -26,14 +26,15 @@ class RegisterView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 class Login(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
-    
+
     def post(self, request, *args, **kwargs):
         email = request.data.get('email', '')
         password = request.data.get('password', '')
         user = authenticate(email=email, password=password)
-        
+
         if user:
             login_serializer = self.serializer_class(data=request.data)
             if login_serializer.is_valid():
@@ -47,9 +48,10 @@ class Login(TokenObtainPairView):
             return Response({'error': 'Contraseña o nombre de usuario incorrectos'}, status=status.HTTP_400_BAD_REQUEST)
         return Response({'error': 'Contraseña o nombre de usuario incorrectos'}, status=status.HTTP_400_BAD_REQUEST)
 
+ 
 class Logout(GenericAPIView):
     permission_classes = [IsAuthenticated]
-    
+    serializer_class = LogoutSerializer
     def post(self, request, *args, **kwargs):
         user = User.objects.filter(id=request.data.get('user', 0))
         if user.exists():

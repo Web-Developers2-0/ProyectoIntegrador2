@@ -42,6 +42,10 @@ class UserSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
+
+class LogoutSerializer(serializers.Serializer):
+    user = serializers.IntegerField()
+
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
