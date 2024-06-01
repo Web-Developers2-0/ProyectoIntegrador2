@@ -12,5 +12,6 @@ export interface Product {
     isbn?: string;
     calification?: number;
     category: number;
+   
   }
   

@@ -180,11 +180,11 @@ a {
     background-color:#9a1515 ;
   }
   
-  .card-content {
-    /*transform: rotateY(-360deg);*/
+  /* .card-content {
+    transform: rotateY(-360deg);
     text-align: center;
-  }
-  /*
+  } */
+
   
   
   /* TABLET */
@@ -215,7 +215,7 @@ a {
       padding: 25px;
       border-bottom-left-radius: 7px;
       border-bottom-right-radius: 7px;
-      /*transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);*/
+      /* transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1); */
       background-color: #0a0000;
     }
   
@@ -260,7 +260,7 @@ a {
       padding: 0px;
       border-bottom-left-radius: 7px;
       border-bottom-right-radius: 7px;
-      /*transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);*/
+      /* transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1); */
       background-color: #0a0000;
     }
     #card_section-titulo {
@@ -356,81 +356,4 @@ a {
     background-color: #e5ac57;
     color: #1e1e1e;
     font: bold;
-}
-
-
-
-
-.selected-products {
-  margin-top: 20px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-  max-width: 400px;
-  position: fixed;
-  top: 70px;
-  right: 20px;
-  z-index: 1000;
-}
-
-.selected-product-info {
-  display: flex;
-  align-items: center;
-}
-
-.selected-product-image {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  margin-right: 10px;
-}
-
-.selected-product-details {
-  flex: 1;
-}
-
-.quantity-controls {
-  display: flex;
-  align-items: center;
-}
-
-.quantity-input {
-  width: 50px;
-  text-align: center;
-}
-
-.btn-cart {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-}
-
-.cart-overlay {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.cart {
-  background: white;
-  border-radius: 8px;
-  padding: 20px;
-  max-height: 80vh;
-  overflow-y: auto;
-}
-
-.list-group-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
 }

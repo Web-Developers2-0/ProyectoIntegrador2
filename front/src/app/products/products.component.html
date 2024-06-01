@@ -9,50 +9,38 @@
   </a>
 </div>
 
-<!-- Botón del carrito con contador -->
-<button class="btn btn-primary position-fixed top-0 end-0 m-3" (click)="toggleCart()">
-  Carrito de Compras ({{ getTotalProducts() }})
-</button>
-
-<!-- Sección de productos seleccionados -->
-<div *ngIf="cartOpen" class="cart-overlay">
-  <div class="cart">
-    <h2 class="text-center">Carrito de Compras</h2>
-    <ul class="list-group">
-      <li *ngFor="let product of selectedProducts" class="list-group-item d-flex justify-content-between align-items-center">
-        <div class="selected-product-info d-flex align-items-center">
-          <img [src]="product.image" [alt]="product.description" class="selected-product-image me-3">
-          <div class="selected-product-details">
-            <p class="mb-0"><strong>{{ product.description }}</strong></p>
-            <p class="mb-0">Precio: ${{ product.price }}</p>
-            <div class="quantity-controls d-flex align-items-center">
-              <button class="btn btn-sm btn-outline-secondary me-2" (click)="decreaseQuantity(product)">-</button>
-              <input type="number" [(ngModel)]="product.quantity" class="form-control form-control-sm quantity-input" readonly>
-              <button class="btn btn-sm btn-outline-secondary ms-2" (click)="increaseQuantity(product)">+</button>
-            </div>
-          </div>
-        </div>
-        <button class="btn btn-sm btn-danger" (click)="removeProduct(product)">Eliminar</button>
-      </li>
-    </ul>
-    <div class="mt-4 text-end">
-      <button class="btn btn-success" (click)="checkout()">Comprar</button>
-    </div>
-  </div>
-</div>
-
-<!-- Sección de productos disponibles -->
 <div id="card_section-root" class="d-flex flex-wrap justify-content-center">
-  <ng-container *ngIf="selectedCategory === 'marvel' || selectedCategory === 'dc'">
+  <ng-container *ngIf="selectedCategory === 'marvel'">
     <div *ngFor="let product of productList" class="card m-2" style="width: 18rem;">
       <img [src]="product.image" [alt]="product.description" class="card-img-top align-self-center">
       <div class="card-body">
         <h5 class="card-title">${{ product.price }}</h5>
         <p class="card-text text-truncate">{{ product.description }}</p>
+        <button class="btn btn-primary" (click)="addProduct(product, 1)">Ver más</button>
         <div class="purchase-info mt-3">
-          <button class="btn btn-primary mt-2" (click)="addProduct(product)">Agregar al carrito</button>
+          <input type="number" min="0" value="0" class="form-control d-inline-block" style="width: 80px;">
         </div>
       </div>
     </div>
   </ng-container>
+  <ng-container *ngIf="selectedCategory === 'dc'">
+    <div *ngFor="let product of productList" class="card m-2" style="width: 18rem;">
+      <img [src]="product.image" [alt]="product.description" class="card-img-top align-self-center">
+      <div class="card-body">
+        <h5 class="card-title">${{ product.price }}</h5>
+        <p class="card-text text-truncate">{{ product.description }}</p>
+        <button class="btn btn-primary" (click)="addProduct(product, 1)">Ver más</button>
+        <div class="purchase-info mt-3">
+          <input type="number" min="0" value="0" class="form-control d-inline-block" style="width: 80px;">
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+<div><h2 class="mt-5">Productos seleccionados:</h2>
+<ul>
+  <li *ngFor="let selectedProduct of selectedProducts">
+    {{ selectedProduct.product.description }} - Cantidad: {{ selectedProduct.quantity }}
+  </li>
+</ul>
 </div>

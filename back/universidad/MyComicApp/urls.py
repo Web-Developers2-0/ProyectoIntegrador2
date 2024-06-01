@@ -5,8 +5,8 @@ from rest_framework_simplejwt.views import TokenVerifyView
 
 
 router = routers.DefaultRouter()
+router.register(r'categories', views.CategoryViewSet)
 router.register(r'products', views.ProductViewSet)
-
 
 urlpatterns = [
     path('register/', views.RegisterView.as_view(), name='register'),
@@ -19,6 +19,6 @@ urlpatterns = [
     
     path('user/', views.UserView.as_view(), name='user'),
     path('user/update/', views.UpdateUserView.as_view(), name='user_update'),
-
-  
+    path('orders/create/', views.CreateOrderView.as_view(), name='orders_create_create'),
+    path('orders/user/', views.UserOrdersView.as_view(), name='orders_user_list'),
 ]
