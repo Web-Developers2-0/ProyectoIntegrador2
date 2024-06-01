@@ -6,15 +6,15 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.generics import GenericAPIView
 from rest_framework.generics import RetrieveUpdateAPIView
 from django.contrib.auth import authenticate
-from .serializers import UserSerializer, CustomTokenObtainPairSerializer, ProductSerializer, CategorySerializer
-from .models import User, Product, Category
-
+from .serializers import UserSerializer, CustomTokenObtainPairSerializer, ProductSerializer, CategorySerializer,OrderCreateSerializer, OrderSerializer
+from .models import User, Product, Category, Order
+from rest_framework.generics import ListAPIView
 from MyComicApp.serializers import (CustomTokenObtainPairSerializer, UserSerializer)
 from MyComicApp.models import User
 from rest_framework.permissions import AllowAny
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
-
+from django.utils import timezone
 
 class RegisterView(APIView):
     permission_classes = [AllowAny]
@@ -94,3 +94,23 @@ class ProductViewSet(ModelViewSet):
     serializer_class = ProductSerializer
     permission_classes = [AllowAny]
     
+#CREAR ORDENES CON USUARIO AUTENTICADO 
+class CreateOrderView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, *args, **kwargs):
+        serializer = OrderCreateSerializer(data=request.data, context={'request': request})
+        if serializer.is_valid():
+            order = serializer.save(id_user=request.user)
+            return Response(OrderSerializer(order).data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    
+#VER LISTA DE ORDENES DE USUARIO AUTENTICADO      
+class UserOrdersView(ListAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = OrderSerializer
+
+    def get_queryset(self):
+        user_id = self.request.user.id
+        return Order.objects.filter(id_user=user_id)    
