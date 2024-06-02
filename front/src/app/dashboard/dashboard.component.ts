@@ -4,6 +4,7 @@ import dashboardData from '../../assets/data/dashboardData.json';
 import { LoginService } from '../services/auth/login.service';;
 import { Router } from '@angular/router';
 import { User } from '../services/user/user';
+import { UserService } from '../services/user/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,26 +19,26 @@ import { User } from '../services/user/user';
 export class DashboardComponent implements OnInit {
   dashboardData: any[] = [];
   isAuthenticated:boolean = false;
-  // userEmail: string = '';
+  
   user: User = {
     id: 0,
     email: '',
     first_name: '',
     last_name: '',
-    phone: '',
     address: '',
-    password: ''
+    phone: 0
   };
  
-  constructor(private loginService: LoginService, private router: Router) {
+  constructor(private loginService: LoginService, private router: Router, private userService: UserService) {
     this.dashboardData = dashboardData;
   }
 
   ngOnInit(): void {
-    const userData = JSON.parse(localStorage.getItem('userData') || '{}');
-    if (userData) {
-      this.user = userData;
-    } 
+    this.userService.getUser(1).subscribe(
+      (userData: User) => {
+        this.user = userData;
+      },
+    )
     
     this.loginService.userLogin.subscribe((isAuthenticated) => {
       this.isAuthenticated = this.isAuthenticated;

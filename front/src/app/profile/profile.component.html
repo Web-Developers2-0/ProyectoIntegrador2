@@ -7,8 +7,8 @@
                     alt="usuario"
                 />
                 <div class="">
-                    <h4>John Doe</h4>
-                    <p class="text-muted font-size-sm">Córdoba, Capital, ARG</p>
+                    <h4>{{user.first_name}} {{user.last_name}}</h4>
+                    <p class="text-muted font-size-sm">{{user.address}}</p>
                 </div>
             </div>
 
@@ -32,12 +32,12 @@
                 <hr>
                 <div class="profile_info">
                     <label for="email">Dirección:</label>
-                    <input type="text" id="adress" name="adress">
+                    <input type="text" id="adress" [(ngModel)]="user.address" name="adress">
                 </div>
                 <hr>
                 <div class="profile_info">
                     <label for="email">Teléfono:</label>
-                    <input type="number" id="phone" name="phone">
+                    <input type="number" id="phone" [(ngModel)]="user.phone" name="phone">
                 </div>
                 <hr>
                 <div class="btn-box">

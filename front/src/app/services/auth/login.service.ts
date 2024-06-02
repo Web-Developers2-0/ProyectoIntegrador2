@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginRequest } from './login.request';
 import { Observable, BehaviorSubject, tap, catchError, throwError, map } from 'rxjs';
@@ -8,19 +8,29 @@ import { Observable, BehaviorSubject, tap, catchError, throwError, map } from 'r
 })
 
 export class LoginService {
+  private token : string = '';
+  // private headers: HttpHeaders;
+
   currentUserLogin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   currentUserData: BehaviorSubject<String> = new BehaviorSubject<String>('');
   
   constructor(private http: HttpClient) { 
+    this.token = localStorage.getItem('token') || '';
+    // this.headers = new HttpHeaders({
+    //   'Content-Type': 'application/json',
+    //   'Authorization': `Bearer ${this.token}`
+    // });
+
     this.currentUserLogin.next(localStorage.getItem('token') !== null);
     this.currentUserData.next(localStorage.getItem('token') || '');
   }
 
   methodlogin(credentials: LoginRequest):Observable<any>{
     
-    return this.http.post<any>('http://localhost:8000/api/login/', credentials).pipe(
+    return this.http.post<any>('http://127.0.0.1:8000/api/login/', credentials).pipe(
       
     tap((userData) => {
+        this.token = userData.token;
         localStorage.setItem('token', userData.token);
         this.currentUserData.next(userData.token);
         this.currentUserLogin.next(true);
@@ -32,7 +42,12 @@ export class LoginService {
 
   methodlogout(): void {
     localStorage.removeItem('token');
+    this.token = '';
+    // this.headers = new HttpHeaders({
+    //   'Content-Type': 'application/json'
+    // });
     this.currentUserLogin.next(false);
+    this.currentUserData.next('');
   }
 
   private handleError(error:HttpErrorResponse){
@@ -50,5 +65,9 @@ export class LoginService {
 
   get userLogin(): Observable<boolean> {
     return this.currentUserLogin.asObservable();
+  }
+
+  get userToken():String{
+    return this.token;
   }
 }
