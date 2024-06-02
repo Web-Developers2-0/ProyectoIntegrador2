@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user/user.service';
-import { User } from '../services/user/user';
 import { FormsModule } from '@angular/forms';
+import { User } from '../services/user/user';
+import { UserService } from '../services/user/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -18,15 +18,19 @@ export class ProfileComponent implements OnInit {
     id: 0,
     email: '',
     first_name: '',
-    last_name: ''
+    last_name: '',
+    address: '',
+    phone: 0
   };
 
   constructor(private userService: UserService) { }
 
-  ngOnInit() {
-    this.userService.getUser(2).subscribe(user => {
-      this.user = user;
-    });
+  ngOnInit(): void {
+    this.userService.getUser(1).subscribe(
+      (userData: User ) => {
+      this.user = userData;
+    },
+  );
   }
 
   onSubmit() {
