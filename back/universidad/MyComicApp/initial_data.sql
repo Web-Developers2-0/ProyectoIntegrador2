@@ -184,12 +184,12 @@ VALUES
 
  INSERT INTO `planetSuperheroesDB`.`mycomicapp_user` (email, first_name, last_name, password, address, image, date_joined, is_active, is_staff, role_id) 
 VALUES 
-('johndoe@mail.com', 'John', 'Doe', 'password', '123 Main St', 'john_doe.jpg', '2024-05-23 16:00:04', true, true, 2), 
-('joane@mail.com', 'Joan', 'Doe', 'password', '456 Main St', 'joan_doe.jpg', '2024-05-23 16:00:04', true, true, 1), 
-('alice@mail.com', 'Alice', 'Smith', 'password', '789 Elm St', 'alice_smith.jpg', '2024-05-23 16:00:04', true, true, 1), 
-('bob@mail.com', 'Bob', 'Johnson', 'password', '101 Oak St', 'bob_johnson.jpg', '2024-05-23 16:00:04', true, true, 1), 
-('eva@mail.com', 'Eva', 'Williams', 'password', '246 Pine St', 'eva_williams.jpg', '2024-05-23 16:00:04', true, true, 1), 
-('michael@mail.com', 'Michael', 'Brown', 'password', '555 Maple St', 'michael_brown.jpg', '2024-05-23 16:00:04', true, true, 1);
+('johndoe@mail.com', 'John', 'Doe', 'pbkdf2_sha256$600000$LnZl1Sh6Ai5Dt4ZKiO7p5T$DMqJ+1fapfK2mCqXYwRUFUh5EHX3QxIcmbY7XRmrVH0=', '123 Main St', 'john_doe.jpg', '2024-05-23 16:00:04', true, true, 2), 
+('joane@mail.com', 'Joan', 'Doe', 'pbkdf2_sha256$600000$LnZl1Sh6Ai5Dt4ZKiO7p5T$DMqJ+1fapfK2mCqXYwRUFUh5EHX3QxIcmbY7XRmrVH0=', '456 Main St', 'joan_doe.jpg', '2024-05-23 16:00:04', true, true, 1), 
+('alice@mail.com', 'Alice', 'Smith', 'pbkdf2_sha256$600000$LnZl1Sh6Ai5Dt4ZKiO7p5T$DMqJ+1fapfK2mCqXYwRUFUh5EHX3QxIcmbY7XRmrVH0=', '789 Elm St', 'alice_smith.jpg', '2024-05-23 16:00:04', true, true, 1), 
+('bob@mail.com', 'Bob', 'Johnson', 'pbkdf2_sha256$600000$LnZl1Sh6Ai5Dt4ZKiO7p5T$DMqJ+1fapfK2mCqXYwRUFUh5EHX3QxIcmbY7XRmrVH0=', '101 Oak St', 'bob_johnson.jpg', '2024-05-23 16:00:04', true, true, 1), 
+('eva@mail.com', 'Eva', 'Williams', 'pbkdf2_sha256$600000$LnZl1Sh6Ai5Dt4ZKiO7p5T$DMqJ+1fapfK2mCqXYwRUFUh5EHX3QxIcmbY7XRmrVH0=', '246 Pine St', 'eva_williams.jpg', '2024-05-23 16:00:04', true, true, 1), 
+('michael@mail.com', 'Michael', 'Brown', 'pbkdf2_sha256$600000$LnZl1Sh6Ai5Dt4ZKiO7p5T$DMqJ+1fapfK2mCqXYwRUFUh5EHX3QxIcmbY7XRmrVH0=', '555 Maple St', 'michael_brown.jpg', '2024-05-23 16:00:04', true, true, 1);
 
 
 INSERT INTO `planetSuperheroesDB`.`orders` (user_id, state, order_date, payment_method, shipping_method, payment_status, total_amount)
