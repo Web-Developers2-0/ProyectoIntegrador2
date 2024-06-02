@@ -34,6 +34,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateTimeField(default=timezone.now)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+    
+    is_superuser = models.BooleanField(default=False)
     role = models.ForeignKey('Role', on_delete=models.SET_NULL, null=True, default=1, related_name='users')
 
     objects = UserManager()
@@ -98,9 +100,9 @@ class Product(models.Model):
 class Order(models.Model):
     id_order = models.AutoField(primary_key=True)
     id_user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, db_column='user_id', related_name='orders')
-    state = models.CharField(max_length=45, blank=False)
+    state = models.CharField(max_length=45, blank=True)
     order_date = models.DateField(null=True)
-    payment_method = models.CharField(max_length=45, blank=False)
+    payment_method = models.CharField(max_length=45, blank=True)
     shipping_method = models.CharField(max_length=45, null=True)
     payment_status = models.CharField(max_length=45, null=True)
     total_amount = models.DecimalField(max_digits=10, decimal_places=2, null=True)
