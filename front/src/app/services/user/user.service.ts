@@ -38,4 +38,11 @@ export class UserService {
     }
     return throwError(() => new Error('Algo salio mal, intente nuevamente'));
   }
+
+  registerUser(user: User): Observable<any> {
+    return this.http.post<any>('http://127.0.0.1:8000/api/register/', user).pipe(
+      catchError(this.handleError)
+    );
+  }
+
 }

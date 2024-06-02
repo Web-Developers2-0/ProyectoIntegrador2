@@ -225,6 +225,7 @@ export class SignupComponent {
     if (isValidUsername && isValidSurname && isValidPassword && isValidEmail && isValidPhone && isValidPasswordMatch && isValidAddress) {
       const formValues = this.signupForm.value;
       const user: User = {
+        id: 0,
         email: formValues.email,
         first_name: formValues.userName,
         last_name: formValues.userSurname,
@@ -239,10 +240,7 @@ export class SignupComponent {
           console.log('Signup successful', response);
           this.router.navigate(['/login']);
         },
-        error => {
-          console.error('Error during signup', error);
-          // Aquí puedes mostrar un mensaje de error al usuario si el registro falla
-        }
+        
       );
     }
   }
