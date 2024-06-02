@@ -1,23 +1,32 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { User } from './user';
+import { JwtService } from '../auth/jwt.service';
+import { LoginService } from '../auth/login.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private JwtService: JwtService, private loginService: LoginService) { }
 
-  getUser(id: number):Observable<User>
-  { 
-    return this.http.get<User>(`https://reqres.in/api/users/2`);
+  getUser(id: number):Observable<User> {
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${this.loginService.userToken}` 
+  });
+    
+    return this.http.get<User>('http://127.0.0.1:8000/api/user/', { headers });
   }
 
-  updateUser(user:User):Observable<any>
-  {
-    return this.http.put(`https://reqres.in/api/users/2`, user);	
+
+  updateUser(user: User):Observable<any>{
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.loginService.userToken}` 
+    });
+  
+    return this.http.patch('http://127.0.0.1:8000/api/user/', user, { headers });	
   }
   
 
