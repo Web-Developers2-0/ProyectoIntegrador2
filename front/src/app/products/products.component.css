@@ -180,11 +180,11 @@ a {
     background-color:#9a1515 ;
   }
   
-  .card-content {
-    /*transform: rotateY(-360deg);*/
+  /* .card-content {
+    transform: rotateY(-360deg);
     text-align: center;
-  }
-  /*
+  } */
+
   
   
   /* TABLET */
@@ -215,7 +215,7 @@ a {
       padding: 25px;
       border-bottom-left-radius: 7px;
       border-bottom-right-radius: 7px;
-      /*transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);*/
+      /* transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1); */
       background-color: #0a0000;
     }
   
@@ -260,7 +260,7 @@ a {
       padding: 0px;
       border-bottom-left-radius: 7px;
       border-bottom-right-radius: 7px;
-      /*transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);*/
+      /* transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1); */
       background-color: #0a0000;
     }
     #card_section-titulo {
@@ -313,3 +313,47 @@ a {
       text-align: center;
     }
   }
+
+
+
+  .purchase-info{
+    margin: 1.5rem 0;
+}
+
+.purchase-info input,
+.purchase-info .btn-shop{
+    border: 1.5px solid #ddd;
+    border-radius:  25px;
+    text-align: center;
+    padding: 0.45rem 0.8rem;
+    outline: 0;
+    margin-right: 0.2rem;
+    margin-bottom: 1rem;
+}
+
+.purchase-info input{
+    width: 60px;
+}
+
+.purchase-info .btn-shop{
+    cursor: pointer;
+    color: #fbf0f0;
+}
+.purchase-info .btn-shop:first-of-type{
+    background-color: #1e1e1e;
+}
+
+.purchase-info .btn-shop:last-of-type{
+    background-color: #9a1515;
+}
+
+.purchase-info .btn-shop:first-of-type:hover, .purchase-info .btn-shop i:hover{
+    color: #88ace0;
+    background-color: #000000;
+}
+
+.purchase-info .btn-shop:last-of-type:hover{
+    background-color: #e5ac57;
+    color: #1e1e1e;
+    font: bold;
+}

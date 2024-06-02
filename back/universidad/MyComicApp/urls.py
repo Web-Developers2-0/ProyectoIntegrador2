@@ -4,6 +4,8 @@ from MyComicApp import views
 from rest_framework_simplejwt.views import TokenVerifyView
 
 router = routers.DefaultRouter()
+router.register(r'categories', views.CategoryViewSet)
+router.register(r'products', views.ProductViewSet)
 
 urlpatterns = [
     path('register/', views.RegisterView.as_view(), name='register'),

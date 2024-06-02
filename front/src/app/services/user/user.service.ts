@@ -25,6 +25,11 @@ export class UserService {
     );
   }
 
+  updateUser(user:User):Observable<any>
+  {
+    return this.http.put(`https://reqres.in/api/users/2`, user);	
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       console.error('Se ha producido un error', error.error);

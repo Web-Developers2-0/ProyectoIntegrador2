@@ -6,13 +6,14 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.generics import GenericAPIView
 from rest_framework.generics import RetrieveUpdateAPIView
 from django.contrib.auth import authenticate
-from .serializers import UserSerializer, CustomTokenObtainPairSerializer
-from .models import User
+from .serializers import UserSerializer, CustomTokenObtainPairSerializer, ProductSerializer, CategorySerializer
+from .models import User, Product, Category
 
 from MyComicApp.serializers import (CustomTokenObtainPairSerializer, UserSerializer)
 from MyComicApp.models import User
 from rest_framework.permissions import AllowAny
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.viewsets import ModelViewSet
 
 
 class RegisterView(APIView):
@@ -82,4 +83,14 @@ class UpdateUserView(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class CategoryViewSet(ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    permission_classes = [AllowAny]
+
+class ProductViewSet(ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    permission_classes = [AllowAny]
     
