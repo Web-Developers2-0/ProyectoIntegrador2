@@ -2,6 +2,8 @@ import { NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ProductServiceService } from '../services/product-service.service';
 import { Product } from '../services/product.interface';
+import { OrderService } from '../services/order.service';
+import { Order, OrderItem } from '../services/order.interface';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -10,16 +12,13 @@ import { RouterLink } from '@angular/router';
   imports: [NgFor, NgIf, RouterLink],
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
-
 })
-
-
 export class ProductsComponent implements OnInit {
   productList: Product[] = [];
   selectedCategory: string = 'marvel';
   selectedProducts: any[] = [];
 
-  constructor(private productServiceService: ProductServiceService) {}
+  constructor(private productServiceService: ProductServiceService, private orderService: OrderService) {}
 
   ngOnInit(): void {
     this.updateCategory(this.selectedCategory);
@@ -50,8 +49,42 @@ export class ProductsComponent implements OnInit {
 
   addProduct(product: any, quantity: number) {
     if (quantity > 0) {
-      this.selectedProducts.push({ ...product, quantity });
-      console.log('Producto añadido:', { ...product, quantity });
+      this.selectedProducts.push({ product, quantity });
+      console.log('Producto añadido:', { product, quantity });
     }
+  }
+
+  createOrder() {
+    const orderItems: OrderItem[] = this.selectedProducts.map(selectedProduct => ({
+      product: selectedProduct.product.id,
+      quantity: selectedProduct.quantity
+    }));
+
+    const order: Order = {
+      order_items: orderItems,
+      state: 'in_progress',
+      order_date: new Date().toISOString().split('T')[0],
+      payment_method: 'credit_card',
+      shipping_method: 'express',
+      payment_status: 'pagado',
+      total_amount: this.calculateTotalAmount()
+    };
+
+    this.orderService.createOrder(order).subscribe(
+      (response) => {
+        console.log('Orden creada:', response);
+      },
+      (error) => {
+        console.error('Error creando la orden', error);
+      }
+    );
+  }
+
+  calculateTotalAmount(): string {
+    let total = 0;
+    this.selectedProducts.forEach(selectedProduct => {
+      total += parseFloat(selectedProduct.product.price) * selectedProduct.quantity;
+    });
+    return total.toFixed(2);
   }
 }
