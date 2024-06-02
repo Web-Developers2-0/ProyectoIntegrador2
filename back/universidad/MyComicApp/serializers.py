@@ -42,6 +42,10 @@ class UserSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
+
+class LogoutSerializer(serializers.Serializer):
+    user = serializers.IntegerField()
+
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
@@ -59,12 +63,11 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product
         fields = '__all__'
 
-#ORDENES SERIALIZERS  
+#Order Serializer---> Order Items Serializer 
 class OrderItemCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderItem
         fields = ['product', 'quantity']
-
 
 class OrderCreateSerializer(serializers.ModelSerializer):
     order_items = OrderItemCreateSerializer(many=True)
@@ -74,46 +77,47 @@ class OrderCreateSerializer(serializers.ModelSerializer):
         fields = ['state', 'payment_method', 'shipping_method', 'payment_status', 'total_amount', 'order_items']
 
     def validate(self, attrs):
+        order_items_data = attrs.get('order_items', [])
+        for order_item_data in order_items_data:
+            product = order_item_data['product']
+            quantity = order_item_data['quantity']
+            if product.stock < quantity:
+                raise serializers.ValidationError(f"No hay suficiente stock para {product.name}")
         attrs.setdefault('state', 'in_progress')
         attrs.setdefault('order_date', timezone.now().date())
         attrs.setdefault('payment_method', 'credit_card')
         attrs.setdefault('shipping_method', 'express')
         attrs.setdefault('payment_status', 'pagado')
-        return super().validate(attrs)
+        return attrs
 
     def create(self, validated_data):
         order_items_data = validated_data.pop('order_items')
-        
         total_amount = Decimal(0)
         
-        # Iterar sobre los elementos del pedido (OrderItems)
         for order_item_data in order_items_data:
             product = order_item_data['product']
             quantity = order_item_data['quantity']
-            
-            # Multiplicar el precio del producto por la cantidad
             subtotal = product.price * quantity
             total_amount += subtotal
+            
+            # Actualizar el stock del producto
+            product.stock -= quantity
+            product.save()
         
-        # Crear la orden con el total_amount calculado
         validated_data['total_amount'] = total_amount
         order = Order.objects.create(**validated_data)
         
-        # Crear los elementos del pedido (OrderItems)
         for order_item_data in order_items_data:
             OrderItem.objects.create(order=order, **order_item_data)
         
         return order
-    
-    
-#Orden item serializers    
+
 class OrderItemSerializer(serializers.ModelSerializer):
     product = serializers.StringRelatedField()
 
     class Meta:
         model = OrderItem
         fields = ['id_order_items', 'product', 'quantity']
-
 
 class OrderSerializer(serializers.ModelSerializer):
     order_items = OrderItemSerializer(many=True, read_only=True)

@@ -28,7 +28,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 admin.site.register(Product, ProductAdmin)
 
-class OrderAdmin(admin.ModelAdmin):
+""" class OrderAdmin(admin.ModelAdmin):
     list_display = ('id_order', 'id_user', 'state', 'order_date', 'payment_method', 'shipping_method', 'payment_status', 'total_amount')
 
 admin.site.register(Order, OrderAdmin)
@@ -37,3 +37,15 @@ class OrderItemAdmin(admin.ModelAdmin):
     list_display = ('id_order_items', 'quantity', 'product', 'order')
 
 admin.site.register(OrderItem, OrderItemAdmin)
+ """
+
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    extra = 1
+
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('id_order', 'id_user', 'state', 'order_date', 'payment_method', 'shipping_method', 'payment_status', 'total_amount')
+    list_filter = ('state', 'order_date', 'payment_method', 'shipping_method', 'payment_status')
+    search_fields = ('id_order', 'id_user__email')
+    inlines = [OrderItemInline]
