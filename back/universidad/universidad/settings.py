@@ -62,7 +62,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     # 'rest_framework_simplejwt.authentication.JWTAuthentication',
 ]
-#CORS_ORIGIN_WHITELIST = ['http://localhost:4200']
+CORS_ORIGIN_WHITELIST = ['http://localhost:4200']
 
 
 CORS_ALLOWED_ORIGINS = ['http://localhost:4200',]

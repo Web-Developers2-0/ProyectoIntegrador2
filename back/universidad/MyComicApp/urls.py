@@ -2,11 +2,16 @@ from django.urls import path, include
 from rest_framework import routers
 from MyComicApp import views
 from rest_framework_simplejwt.views import TokenVerifyView
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+#from .views import UserViewSet, GroupViewSet
+
 
 
 router = routers.DefaultRouter()
 router.register(r'categories', views.CategoryViewSet)
 router.register(r'products', views.ProductViewSet)
+
 
 urlpatterns = [
     path('register/', views.RegisterView.as_view(), name='register'),

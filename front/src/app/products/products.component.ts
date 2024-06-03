@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProductServiceService } from '../services/product-service.service';
 import { Product } from '../services/product.interface';
 import { RouterLink } from '@angular/router';
+import { CartService } from '../services/cart/cart.service';
+import { CartComponent } from '../cart/cart.component';
 
 @Component({
   selector: 'app-products',
