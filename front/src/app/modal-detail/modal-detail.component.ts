@@ -1,8 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { NgFor, NgIf, CommonModule } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
 import { ProductServiceService } from '../services/product-service.service';
 import { Product } from '../services/product.interface';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -10,7 +9,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
   selector: 'app-product-modal',
   standalone: true,
-  imports: [MatDialogModule, MatButtonModule, NgFor, NgIf, CommonModule, MatIconModule,],
+  imports: [MatDialogModule, MatButtonModule, NgFor, NgIf, CommonModule,],
   templateUrl: './modal-detail.component.html',
   styleUrls: ['./modal-detail.component.css']
 })

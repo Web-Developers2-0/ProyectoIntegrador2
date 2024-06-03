@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from './services/auth/login.service';
 import { JwtService } from './services/auth/jwt.service';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 
 
@@ -15,6 +16,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     importProvidersFrom(BrowserModule, FormsModule, HttpClientModule, ReactiveFormsModule),
     LoginService,
-    JwtService,
+    JwtService, provideAnimationsAsync('noop'), provideAnimationsAsync('noop'), provideAnimationsAsync('noop'),
   ]
 };
