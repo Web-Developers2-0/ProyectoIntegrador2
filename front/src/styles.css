@@ -16,6 +16,10 @@
   
   ::-webkit-scrollbar-thumb:hover {
     background: #dfa349;
+<<<<<<< HEAD
   }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+=======
+  }
+>>>>>>> d64e4c1350f3a2d173661f3ab185a374f9c451fd

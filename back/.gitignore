@@ -1,3 +1,7 @@
 entorno/
+<<<<<<< HEAD
 .env
 .env32/
+=======
+.env
+>>>>>>> d64e4c1350f3a2d173661f3ab185a374f9c451fd

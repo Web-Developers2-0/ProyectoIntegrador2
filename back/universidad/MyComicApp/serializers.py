@@ -9,6 +9,10 @@ from .models import Order, OrderItem
 from decimal import Decimal
 from django.utils import timezone
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d64e4c1350f3a2d173661f3ab185a374f9c451fd
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -46,6 +50,10 @@ class UserSerializer(serializers.ModelSerializer):
 class LogoutSerializer(serializers.Serializer):
     user = serializers.IntegerField()
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d64e4c1350f3a2d173661f3ab185a374f9c451fd
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
