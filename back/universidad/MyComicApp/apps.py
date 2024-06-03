@@ -9,3 +9,5 @@ class MyComicAppConfig(AppConfig):
 
     def ready(self):
         import MyComicApp.load_initial_data
+        
+        import MyComicApp.signals

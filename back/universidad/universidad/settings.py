@@ -62,7 +62,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     # 'rest_framework_simplejwt.authentication.JWTAuthentication',
 ]
-#CORS_ORIGIN_WHITELIST = ['http://localhost:4200']
+CORS_ORIGIN_WHITELIST = ['http://localhost:4200']
 
 
 CORS_ALLOWED_ORIGINS = ['http://localhost:4200',]
@@ -94,11 +94,11 @@ WSGI_APPLICATION = 'universidad.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DATABASE_NAME'),
-        'USER': os.getenv('DATABASE_USER'),
-        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
-        'HOST': os.getenv('DATABASE_HOST'),
-        'PORT': os.getenv('DATABASE_PORT'),
+        'NAME': 'planetSuperheroesDB',
+        'USER': 'root',
+        'PASSWORD': 'desarrollo25',
+        'HOST': 'localhost',
+        'PORT': '3306',
         'OPTIONS': {
             'sql_mode': 'traditional',
         }
