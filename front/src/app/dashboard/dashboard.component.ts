@@ -5,11 +5,8 @@ import { LoginService } from '../services/auth/login.service';;
 import { Router } from '@angular/router';
 import { User } from '../services/user/user';
 import { UserService } from '../services/user/user.service';
-<<<<<<< HEAD
-=======
 import { OrdersService } from '../services/orders/orders.service';
 import { Order } from '../services/orders/order';
->>>>>>> d64e4c1350f3a2d173661f3ab185a374f9c451fd
 
 @Component({
   selector: 'app-dashboard',
@@ -24,10 +21,7 @@ import { Order } from '../services/orders/order';
 export class DashboardComponent implements OnInit {
   dashboardData: any[] = [];
   isAuthenticated:boolean = false;
-<<<<<<< HEAD
-=======
   userOrders: Order[] = [];
->>>>>>> d64e4c1350f3a2d173661f3ab185a374f9c451fd
   
   user: User = {
     id: 0,
@@ -40,11 +34,7 @@ export class DashboardComponent implements OnInit {
     confirmPassword: '',
   };
  
-<<<<<<< HEAD
-  constructor(private loginService: LoginService, private router: Router, private userService: UserService) {
-=======
   constructor(private loginService: LoginService, private router: Router, private userService: UserService, private ordersService: OrdersService) {
->>>>>>> d64e4c1350f3a2d173661f3ab185a374f9c451fd
     this.dashboardData = dashboardData;
   }
 
@@ -58,8 +48,6 @@ export class DashboardComponent implements OnInit {
     this.loginService.userLogin.subscribe((isAuthenticated) => {
       this.isAuthenticated = this.isAuthenticated;
     });
-<<<<<<< HEAD
-=======
 
     this.getUserOrders();
   }
@@ -80,7 +68,6 @@ export class DashboardComponent implements OnInit {
         }));
       },
     );
->>>>>>> d64e4c1350f3a2d173661f3ab185a374f9c451fd
   }
 
   logout() {

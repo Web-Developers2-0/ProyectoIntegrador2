@@ -5,21 +5,11 @@ import { Product } from '../services/product.interface';
 import { RouterLink } from '@angular/router';
 import { CartService } from '../services/cart/cart.service';
 import { CartComponent } from '../cart/cart.component';
-<<<<<<< HEAD
-import {MatDialog, MatDialogModule} from '@angular/material/dialog';
-import {MatButtonModule} from '@angular/material/button';
-import { ProductModalComponent } from '../modal-detail/modal-detail.component';
-=======
->>>>>>> d64e4c1350f3a2d173661f3ab185a374f9c451fd
 
 @Component({
   selector: 'app-products',
   standalone: true,
-<<<<<<< HEAD
-  imports: [NgFor, NgIf, RouterLink, MatButtonModule, MatDialogModule],
-=======
   imports: [NgFor, NgIf, RouterLink],
->>>>>>> d64e4c1350f3a2d173661f3ab185a374f9c451fd
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 
@@ -31,11 +21,7 @@ export class ProductsComponent implements OnInit {
   selectedCategory: string = 'marvel';
   selectedProducts: any[] = [];
 
-<<<<<<< HEAD
-  constructor(private productServiceService: ProductServiceService, private dialog: MatDialog) {}
-=======
   constructor(private productServiceService: ProductServiceService) {}
->>>>>>> d64e4c1350f3a2d173661f3ab185a374f9c451fd
 
   ngOnInit(): void {
     this.updateCategory(this.selectedCategory);
@@ -70,14 +56,4 @@ export class ProductsComponent implements OnInit {
       console.log('Producto añadido:', { ...product, quantity });
     }
   }
-<<<<<<< HEAD
-
-  openDialog(productId: number): void {
-    this.dialog.open(ProductModalComponent, {
-      data: { productId }
-    });
-  }
 }
-=======
-}
->>>>>>> d64e4c1350f3a2d173661f3ab185a374f9c451fd

@@ -13,15 +13,6 @@ export class ProductServiceService {
   obtenerProductos(): Observable<Product[]> {
     return this.http.get<Product[]>(this.apiUrl);
   }
-<<<<<<< HEAD
-
-  obtenerProductoPorId(productId: number): Observable<Product> {
-    const url = `${this.apiUrl}${productId}/`;
-    return this.http.get<Product>(url);
-  }
-  
-=======
->>>>>>> d64e4c1350f3a2d173661f3ab185a374f9c451fd
 }
 
 

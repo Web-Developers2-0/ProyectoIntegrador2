@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { Component } from '@angular/core';
-=======
 import { Component, OnDestroy, OnInit } from '@angular/core';
->>>>>>> d64e4c1350f3a2d173661f3ab185a374f9c451fd
 import { ContactComponent } from '../contact/contact.component';
 
 @Component({
@@ -12,11 +8,6 @@ import { ContactComponent } from '../contact/contact.component';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-<<<<<<< HEAD
-export class HomeComponent {
-  counter: number = 0;
-  operacion: number = 0;
-=======
 // export class HomeComponent {
 //   counter: number = 0;
 //   operacion: number = 0;
@@ -79,63 +70,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   operacion: number = 0;
   interval: any;
   sliderSections: HTMLElement[] = [];
->>>>>>> d64e4c1350f3a2d173661f3ab185a374f9c451fd
 
   constructor() { }
 
   ngOnInit(): void {
-<<<<<<< HEAD
-    const btnLeft = document.querySelector(".btn-left") as HTMLElement;
-    const btnRight = document.querySelector(".btn-right") as HTMLElement;
-    const slider = document.querySelector("#slider") as HTMLElement;
-    const sliderSections = document.querySelectorAll(".slider-section");
-
-    btnLeft.addEventListener("click", () => this.moveToLeft());
-    btnRight.addEventListener("click", () => this.moveToRight());
-
-    setInterval(() => {
-        this.moveToRight();
-    }, 3000);
-  }
-
-  private moveToLeft(): void {
-    const slider = document.querySelector("#slider") as HTMLElement;
-    const sliderSections = document.querySelectorAll(".slider-section");
-    const widthImg = 100 / sliderSections.length;
-
-    this.counter--;
-    if (this.counter < 0) {
-        this.counter = sliderSections.length - 1;
-        this.operacion = widthImg * (sliderSections.length - 1);
-        slider.style.transform = `translate(-${this.operacion}%)`;
-        slider.style.transition = "none";
-        return;
-    }
-    this.operacion = this.operacion - widthImg;
-    slider.style.transform = `translate(-${this.operacion}%)`;
-    slider.style.transition = "all ease .6s";
-  }
-
-  private moveToRight(): void {
-    const slider = document.querySelector("#slider") as HTMLElement;
-    const sliderSections = document.querySelectorAll(".slider-section");
-    const widthImg = 100 / sliderSections.length;
-
-    if (this.counter >= sliderSections.length - 1) {
-        this.counter = 0;
-        this.operacion = 0;
-        slider.style.transform = `translate(-${this.operacion}%)`;
-        slider.style.transition = "none";
-        return;
-    }
-    this.counter++;
-    this.operacion = this.operacion + widthImg;
-    slider.style.transform = `translate(-${this.operacion}%)`;
-    slider.style.transition = "all ease .6s";
-  }
-}
-
-=======
     this.interval = setInterval(() => {
       this.moveToRight();
     }, 3000);
@@ -181,4 +119,3 @@ export class HomeComponent implements OnInit, OnDestroy {
     return 100 / this.getTotalSections();
   }
 }
->>>>>>> d64e4c1350f3a2d173661f3ab185a374f9c451fd

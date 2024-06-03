@@ -11,13 +11,8 @@
     <div class="user_banner">
         <div class="user_data">
             <div class="user_img">
-<<<<<<< HEAD
-                <img 
-                  src="../../assets/images/user.png" 
-=======
                 <img
                   src="../../assets/images/user.png"
->>>>>>> d64e4c1350f3a2d173661f3ab185a374f9c451fd
                   alt="usuario"
                   (click)="goToProfile()"
                 />
@@ -26,11 +21,6 @@
             <span>{{ user.email }}</span>
             <span>{{ user.first_name }}</span>
         </div>
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> d64e4c1350f3a2d173661f3ab185a374f9c451fd
         <button class="logout_btn" (click)="logout()">
           cerrar sesión
         </button>
@@ -44,28 +34,6 @@
                 <tr class="tr">
                     <th scope="col">ID</th>
                     <th scope="col">Fecha</th>
-<<<<<<< HEAD
-                    <th scope="col">Producto</th>
-                    <th scope="col">Cantidad</th>
-                    <th scope="col">Precio</th>
-                    <th scope="col">Total</th>
-                <th scope="col">Estado</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of dashboardData">
-                <td scope="row">{{ item.id }}</td>
-                <td>{{ item.date }}</td>
-                <td><img src="../../assets/images/{{ item.product_img }}" alt="comic"></td>
-                <td>{{ item.quantity }}</td>
-                <td>{{ item.price }}</td>
-                <td>{{ item.total }}</td>
-                <td><span [ngClass]="{
-                    'completed': item.status === 'Completado',
-                    'pending': item.status === 'En proceso',
-                    'cancelled': item.status === 'Cancelado'
-                }">{{ item.status }}</span></td>
-=======
                     <th scope="col">Método de pago</th>
                     <th scope="col">Método de envío</th>
                     <th scope="col">Estado del pago</th>
@@ -87,7 +55,6 @@
                     'pending': order.state === 'En proceso',
                     'cancelled': order.state === 'Cancelado'
                 }">{{ order.state }}</span></td>
->>>>>>> d64e4c1350f3a2d173661f3ab185a374f9c451fd
               </tr>
             </tbody>
           </table>
