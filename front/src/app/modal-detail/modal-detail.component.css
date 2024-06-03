@@ -5,7 +5,7 @@
 }
 
 /* Estilos generales del modal */
-/* Eliminar altura fija */
+
 .modal-dialog {
   display: flex;
   align-items: center;
@@ -13,8 +13,9 @@
 }
 
 /* Estilos del encabezado */
+
 .modal-header {
-  padding: 0.5rem 1.5rem; /* Reducir el relleno */
+  padding: 0.5rem 1.5rem; 
   border-bottom: 1px solid #ddd;
 }
 
@@ -76,7 +77,7 @@
   font-size: 0.9rem;
   opacity: 0.8;
   text-align: justify;
-  margin-bottom: 20px; /* Ajusta el margen inferior según sea necesario */
+  margin-bottom: 20px; 
 }
 
 .product-detail h2 {
@@ -89,7 +90,7 @@
 }
 
 .product-detail ul {
-  margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+  margin-top: 20px; 
 }
 
 .product-detail ul li {
