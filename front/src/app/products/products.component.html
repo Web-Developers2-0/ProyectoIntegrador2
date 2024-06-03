@@ -1,42 +1,50 @@
-<h1> Nuestros Productos</h1>
+<h1 class="text-center">Nuestros Productos</h1>
 
 <div class="card_section-titulo">
-  <a href="#" (click)="updateCategory('marvel'); $event.preventDefault() "><h2 class="card_section-titulo1">Marvel Comics</h2></a>
-  <a href="#" (click)="updateCategory('dc'); $event.preventDefault()"><h2 class="card_section-titulo2"> DC Comics</h2></a>
+  <a href="#" (click)="updateCategory('marvel'); $event.preventDefault()" class="text-decoration-none">
+    <h2 class="card_section-titulo1">Marvel Comics</h2>
+  </a>
+  <a href="#" (click)="updateCategory('dc'); $event.preventDefault()" class="text-decoration-none">
+    <h2 class="card_section-titulo2">DC Comics</h2>
+  </a>
 </div>
 
-<div id="card_section-root">
-  
+<div id="card_section-root" class="d-flex flex-wrap justify-content-center">
   <ng-container *ngIf="selectedCategory === 'marvel'">
-
-    <div *ngFor="let product of productList" class="card">
-      <img [src]="product.image" [alt]="product.description">
-      <div class="card-content">
-        <h3>${{ product.price }}</h3>
-        <h4>{{ product.description }}</h4>
-        <button ><a class="nav-link" routerLink="/detailsprod" routerLinkActive="active">Ver más</a></button>
+    <div *ngFor="let product of productList" class="card m-2" style="width: 18rem;">
+      <img [src]="product.image" [alt]="product.name" class="card-img-top align-self-center">
+      <div class="card-body">
+        <h5 class="card-title">${{ product.price }}</h5>
+        <p class="card-text ">{{ product.name }}</p>
+        <button class="btn btn-primary" (click)="addProduct(product, 1)">Ver más</button>
+        <button class="btn btn-primary" (click)="openDialog(product.id_product)">Detalles</button>
+        <div class="purchase-info mt-3">
+          <input type="number" min="0" value="0" class="form-control d-inline-block" style="width: 80px;">
+        </div>
       </div>
     </div>
- 
   </ng-container>
   <ng-container *ngIf="selectedCategory === 'dc'">
-
-    <div *ngFor="let product of productList" class="card">
-      <img [src]="product.image" [alt]="product.description">
-      <div class="card-content">
-        <h3>${{ product.price }}</h3>
-        <h4>{{ product.description }}</h4>
-        <button><a class="nav-link" routerLink="/detailsprod" routerLinkActive="active">Ver más</a></button>
+    <div *ngFor="let product of productList" class="card m-2" style="width: 18rem;">
+      <img [src]="product.image" [alt]="product.name" class="card-img-top align-self-center">
+      <div class="card-body">
+        <h5 class="card-title">${{ product.price }}</h5>
+        <p class="card-text ">{{ product.name }}</p>
+        <button class="btn btn-primary" (click)="addProduct(product, 1)">Ver más</button>
+        <button class="btn btn-primary" (click)="openDialog(product.id_product)">Detalles</button>
+        <div class="purchase-info mt-3">
+          <input type="number" min="0" value="0" class="form-control d-inline-block" style="width: 80px;">
+        </div>
       </div>
     </div>
-
   </ng-container>
 </div>
-
-   
-
-
-
-  
-
-  
+<div>
+  <h2 class="mt-5">Productos seleccionados:</h2>
+  <ul>
+    <li *ngFor="let selectedProduct of selectedProducts">
+      {{ selectedProduct.product?.description }} - Cantidad: {{ selectedProduct.quantity }}
+    </li>
+  </ul>
+</div>
+<!-- <button class="btn btn-success mt-3" (click)="createOrder()">Crear Orden</button> -->
