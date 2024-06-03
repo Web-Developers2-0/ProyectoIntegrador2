@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import Group  # Agrega esta línea
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, role=None, **extra_fields):
@@ -52,7 +53,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 class Role(models.Model):
     id_role = models.AutoField(primary_key=True)
     name = models.CharField(max_length=45, blank=False)
-    
+    group = models.OneToOneField(Group, on_delete=models.CASCADE, null=True)
+
     class Meta:
         db_table = 'roles'
         verbose_name = 'Role'
@@ -77,7 +79,7 @@ class Category(models.Model):
 class Product(models.Model):
     id_product = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, blank=False)
-    description = models.CharField(max_length=255, blank=False)
+    description = models.CharField(max_length=2555, blank=False)
     price = models.DecimalField(max_digits=10, decimal_places=2, blank=False)
     discount = models.IntegerField(blank=True, null=True)
     stock = models.IntegerField(blank=False)

@@ -16,6 +16,10 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
 from django.utils import timezone
 
+
+
+
+
 class RegisterView(APIView):
     permission_classes = [AllowAny]
     
@@ -58,8 +62,9 @@ class Logout(GenericAPIView):
             RefreshToken.for_user(user.first())
             return Response({'message': 'Sesión cerrada correctamente.'}, status=status.HTTP_200_OK)
         return Response({'error': 'No existe este usuario.'}, status=status.HTTP_400_BAD_REQUEST)
+         
 
-
+        
 # ver los datos del usuario logueado
 
 class UserView(RetrieveUpdateAPIView):
@@ -96,6 +101,8 @@ class ProductViewSet(ModelViewSet):
     serializer_class = ProductSerializer
     permission_classes = [AllowAny]
     
+    
+    
 #CREAR ORDENES CON USUARIO AUTENTICADO 
 class CreateOrderView(APIView):
     permission_classes = [IsAuthenticated]
@@ -108,6 +115,7 @@ class CreateOrderView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     
+
 #VER LISTA DE ORDENES DE USUARIO AUTENTICADO      
 class UserOrdersView(ListAPIView):
     permission_classes = [IsAuthenticated]
@@ -116,3 +124,8 @@ class UserOrdersView(ListAPIView):
     def get_queryset(self):
         user_id = self.request.user.id
         return Order.objects.filter(id_user=user_id)    
+
+
+
+
+
