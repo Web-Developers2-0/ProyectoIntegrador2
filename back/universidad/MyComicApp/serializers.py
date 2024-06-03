@@ -9,7 +9,6 @@ from .models import Order, OrderItem
 from decimal import Decimal
 from django.utils import timezone
 
-
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -46,7 +45,6 @@ class UserSerializer(serializers.ModelSerializer):
 
 class LogoutSerializer(serializers.Serializer):
     user = serializers.IntegerField()
-
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod

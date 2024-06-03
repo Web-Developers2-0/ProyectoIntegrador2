@@ -135,7 +135,6 @@ VALUES
  '9788416998166',
  1,
  NULL),
-
 ('Black Widow',
  'La historia de espías del siglo! Natasha Romanoff es la espía más letal del Universo Marvel y el corazón palpitante de los Avengers. ',
  9800.00,

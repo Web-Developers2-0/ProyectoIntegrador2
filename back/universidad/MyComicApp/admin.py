@@ -80,7 +80,6 @@ class OrderItemInline(admin.TabularInline):
     model = OrderItem
     extra = 1
 
-
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('id_order', 'id_user', 'state', 'order_date', 'payment_method', 'shipping_method', 'payment_status', 'total_amount')
     list_filter = ('state', 'order_date', 'payment_method', 'shipping_method', 'payment_status')

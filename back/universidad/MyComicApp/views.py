@@ -115,7 +115,6 @@ class CreateOrderView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     
-
 #VER LISTA DE ORDENES DE USUARIO AUTENTICADO      
 class UserOrdersView(ListAPIView):
     permission_classes = [IsAuthenticated]
