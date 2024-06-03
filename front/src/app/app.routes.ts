@@ -17,10 +17,8 @@ export const routes: Routes = [
     {path:'contact', component:ContactComponent},
     {path:'app-products', component:ProductsComponent},
     {path: 'detailsprod', component:DetailsprodComponent},
-
     { path: 'login', component:LoginComponent },
     { path: 'dashboard', component: DashboardComponent },
-
     {path:"", redirectTo:"/app-products", pathMatch:"full"},
     {path:'app-products', component:ProductsComponent},
    

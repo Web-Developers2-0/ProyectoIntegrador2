@@ -26,7 +26,9 @@ export class DashboardComponent implements OnInit {
     first_name: '',
     last_name: '',
     address: '',
-    phone: 0
+    phone: 0,
+    password: '',
+    confirmPassword: '',
   };
  
   constructor(private loginService: LoginService, private router: Router, private userService: UserService) {

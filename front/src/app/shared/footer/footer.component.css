@@ -37,6 +37,7 @@
 
 li{
     text-decoration: none;
+    list-style-type: none;
 }
 
 .footer-links ul li a{
