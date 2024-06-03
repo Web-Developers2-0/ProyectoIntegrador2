@@ -65,12 +65,25 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product
         fields = '__all__'
 
+
+
+
+
+
+
+
+
+
+
 #Order Serializer---> Order Items Serializer 
 class OrderItemCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderItem
         fields = ['product', 'quantity']
 
+
+
+ 
 class OrderCreateSerializer(serializers.ModelSerializer):
     order_items = OrderItemCreateSerializer(many=True)
 
@@ -81,6 +94,8 @@ class OrderCreateSerializer(serializers.ModelSerializer):
     def validate(self, attrs):
         order_items_data = attrs.get('order_items', [])
         for order_item_data in order_items_data:
+            if 'product' not in order_item_data:
+                raise serializers.ValidationError("Cada elemento de 'order_items' debe tener una clave 'product'.")
             product = order_item_data['product']
             quantity = order_item_data['quantity']
             if product.stock < quantity:
@@ -128,3 +143,5 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = ['id_order', 'user', 'state', 'order_date', 'payment_method', 'shipping_method', 'payment_status', 'total_amount', 'order_items']
+
+

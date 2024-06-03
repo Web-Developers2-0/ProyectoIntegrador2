@@ -34,4 +34,16 @@ export class OrdersService {
     }
     return throwError(() => new Error('Algo salio mal, intente nuevamente'));
   }
+
+  createOrder(orderItems: { product: number, quantity: number }[]): Observable<Order> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.loginService.userToken}`,
+      'Content-Type': 'application/json'
+    });
+    const orderPayload = { order_items: orderItems };
+    return this.http.post<Order>('http://127.0.0.1:8000/api/orders/create/', orderPayload, { headers })
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 }
