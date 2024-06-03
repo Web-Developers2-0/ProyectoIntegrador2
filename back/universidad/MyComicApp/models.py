@@ -79,7 +79,7 @@ class Category(models.Model):
 class Product(models.Model):
     id_product = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, blank=False)
-    description = models.CharField(max_length=2555, blank=False)
+    description = models.CharField(max_length=5000, blank=False)
     price = models.DecimalField(max_digits=10, decimal_places=2, blank=False)
     discount = models.IntegerField(blank=True, null=True)
     stock = models.IntegerField(blank=False)
