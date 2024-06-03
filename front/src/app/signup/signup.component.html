@@ -5,14 +5,14 @@
             <h1>PLANET SUPER HEROES</h1>
         </div>
         <h5>Crear nuevo usuario</h5>
-        <div class="cotenedor">
+        <div class="contenedor">
             <div class="form__field">
                 <input type="text" placeholder="Nombre" formControlName="userName"/>
                 <small *ngIf="signupForm.get('userName')?.errors?.['required'] && signupForm.get('userName')?.touched">*El nombre es requerido</small>                
             </div>
             <div class="form__field">
                 <input type="text" placeholder="Apellido" formControlName="userSurname"/>
-                <small *ngIf="signupForm.get('userName')?.errors?.['required'] && signupForm.get('userSurname')?.touched">*El apellido es requerido</small>                
+                <small *ngIf="signupForm.get('userSurname')?.errors?.['required'] && signupForm.get('userSurname')?.touched">*El apellido es requerido</small>                
             </div>
 
             <div class="form__field">

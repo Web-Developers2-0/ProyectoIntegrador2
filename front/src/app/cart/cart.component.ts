@@ -13,9 +13,33 @@ import { CartService } from '../services/cart/cart.service';
   standalone: true,
   imports: [RouterLink,RouterModule,RouterLinkActive,NgIf, CommonModule, ProductsComponent],
 })
-export class CartComponent {
-      
-    
+
+export class CartComponent implements OnInit {
+  cartItems = this.cartService.cartItems;
+
+  constructor(private cartService: CartService) {}
+
+  ngOnInit(): void {}
+
+  increaseQuantity(productId: number): void {
+    this.cartService.updateQuantity(productId, 1);
+  }
+
+  decreaseQuantity(productId: number): void {
+    this.cartService.updateQuantity(productId, -1);
+  }
+
+  removeItem(productId: number): void {
+    this.cartService.removeItem(productId);
+  }
+
+  isNumeric(value: any): boolean {
+    return typeof value === 'number' && !isNaN(value);
+  }
+
+  getTotal(): number {
+    return this.cartItems.reduce((total: number, item: any) => total + item.product.price * item.quantity, 0);
+  }
 }                    
 
 

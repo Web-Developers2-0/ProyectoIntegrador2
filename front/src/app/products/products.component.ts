@@ -9,7 +9,7 @@ import { CartComponent } from '../cart/cart.component';
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [NgFor, NgIf, RouterLink],
+  imports: [NgFor, NgIf, RouterLink, CartComponent],
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 
@@ -21,7 +21,7 @@ export class ProductsComponent implements OnInit {
   selectedCategory: string = 'marvel';
   selectedProducts: any[] = [];
 
-  constructor(private productServiceService: ProductServiceService) {}
+  constructor(private productServiceService: ProductServiceService, private cartService: CartService) {}
 
   ngOnInit(): void {
     this.updateCategory(this.selectedCategory);
@@ -50,10 +50,7 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  addProduct(product: any, quantity: number) {
-    if (quantity > 0) {
-      this.selectedProducts.push({ ...product, quantity });
-      console.log('Producto añadido:', { ...product, quantity });
-    }
+  addToCart(product: Product): void {
+    this.cartService.addProductToCart(product);
   }
 }
