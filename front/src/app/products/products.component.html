@@ -1,4 +1,4 @@
-<h1 class="text-center">Nuestros Productos</h1>
+ <h1 class="text-center">Nuestros Productos</h1>
 
 <div class="card_section-titulo">
   <a href="#" (click)="updateCategory('marvel'); $event.preventDefault()" class="text-decoration-none">
@@ -15,11 +15,11 @@
       <img [src]="product.image" [alt]="product.name" class="card-img-top align-self-center">
       <div class="card-body">
         <h5 class="card-title">${{ product.price }}</h5>
-        <p class="card-text ">{{ product.name }}</p>
+        <p class="card-text">{{ product.name }}</p>
         <button class="btn btn-primary" (click)="addProduct(product, 1)">Ver más</button>
         <button class="btn btn-primary" (click)="openDialog(product.id_product)">Detalles</button>
         <div class="purchase-info mt-3">
-          <input type="number" min="0" value="0" class="form-control d-inline-block" style="width: 80px;">
+          <input type="number" min="0" value="0" (input)="onQuantityChange(product, $event)" class="form-control d-inline-block" style="width: 80px;">
         </div>
       </div>
     </div>
@@ -29,11 +29,12 @@
       <img [src]="product.image" [alt]="product.name" class="card-img-top align-self-center">
       <div class="card-body">
         <h5 class="card-title">${{ product.price }}</h5>
-        <p class="card-text ">{{ product.name }}</p>
+        <p class="card-text">{{ product.name }}</p>
         <button class="btn btn-primary" (click)="addProduct(product, 1)">Ver más</button>
         <button class="btn btn-primary" (click)="openDialog(product.id_product)">Detalles</button>
         <div class="purchase-info mt-3">
-          <input type="number" min="0" value="0" class="form-control d-inline-block" style="width: 80px;">
+          <input (change)="onQuantityChange(product.id_product, $event)" type="number" min="0" value="0" class="form-control d-inline-block" style="width: 80px;">
+
         </div>
       </div>
     </div>
@@ -42,9 +43,9 @@
 <div>
   <h2 class="mt-5">Productos seleccionados:</h2>
   <ul>
-    <li *ngFor="let selectedProduct of selectedProducts">
-      {{ selectedProduct.product?.description }} - Cantidad: {{ selectedProduct.quantity }}
+    <li *ngFor="let selectedProduct of selectedItems">
+      {{ selectedProduct.id_product }} - Cantidad: {{ selectedProduct.quantity }}
     </li>
   </ul>
 </div>
-<!-- <button class="btn btn-success mt-3" (click)="createOrder()">Crear Orden</button> -->
+<app-cart></app-cart>
