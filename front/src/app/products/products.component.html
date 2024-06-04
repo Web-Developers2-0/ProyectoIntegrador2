@@ -17,6 +17,7 @@
         <h5 class="card-title">${{ product.price }}</h5>
         <p class="card-text">{{ product.name }}</p>
         <button class="btn btn-primary" (click)="addProduct(product, 1)">Ver más</button>
+        <button class="btn btn-primary" (click)="openDialog(product.id_product)">Detalles</button>
         <div class="purchase-info mt-3">
           <input type="number" min="0" value="0" (input)="onQuantityChange(product, $event)" class="form-control d-inline-block" style="width: 80px;">
         </div>
@@ -30,6 +31,7 @@
         <h5 class="card-title">${{ product.price }}</h5>
         <p class="card-text">{{ product.name }}</p>
         <button class="btn btn-primary" (click)="addProduct(product, 1)">Ver más</button>
+        <button class="btn btn-primary" (click)="openDialog(product.id_product)">Detalles</button>
         <div class="purchase-info mt-3">
           <input (change)="onQuantityChange(product.id_product, $event)" type="number" min="0" value="0" class="form-control d-inline-block" style="width: 80px;">
 

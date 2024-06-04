@@ -117,7 +117,6 @@ class CreateOrderView(APIView):
 
 
     
-
 #VER LISTA DE ORDENES DE USUARIO AUTENTICADO      
 class UserOrdersView(ListAPIView):
     permission_classes = [IsAuthenticated]

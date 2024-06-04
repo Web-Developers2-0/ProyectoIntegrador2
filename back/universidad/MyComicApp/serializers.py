@@ -9,7 +9,6 @@ from .models import Order, OrderItem
 from decimal import Decimal
 from django.utils import timezone
 
-
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -46,7 +45,6 @@ class UserSerializer(serializers.ModelSerializer):
 
 class LogoutSerializer(serializers.Serializer):
     user = serializers.IntegerField()
-
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
@@ -100,7 +98,7 @@ class OrderCreateSerializer(serializers.ModelSerializer):
             quantity = order_item_data['quantity']
             if product.stock < quantity:
                 raise serializers.ValidationError(f"No hay suficiente stock para {product.name}")
-        attrs.setdefault('state', 'in_progress')
+        attrs.setdefault('state', 'En proceso')
         attrs.setdefault('order_date', timezone.now().date())
         attrs.setdefault('payment_method', 'credit_card')
         attrs.setdefault('shipping_method', 'express')

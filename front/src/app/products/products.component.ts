@@ -5,7 +5,8 @@ import { RouterLink } from '@angular/router';
 import { CartService } from '../services/cart/cart.service';
 import { CartComponent } from '../cart/cart.component';
 import { NgFor, NgIf } from '@angular/common';
-
+import { ProductModalComponent } from '../modal-detail/modal-detail.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-products',
   standalone: true,
@@ -13,12 +14,13 @@ import { NgFor, NgIf } from '@angular/common';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
+
 export class ProductsComponent implements OnInit {
   productList: Product[] = [];
   selectedCategory: string = 'marvel';
   selectedProducts: any[] = [];
 
-  constructor(private productServiceService: ProductServiceService, public cartService: CartService, ) {}
+  constructor(private productServiceService: ProductServiceService, public cartService: CartService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.updateCategory(this.selectedCategory);
@@ -68,5 +70,13 @@ export class ProductsComponent implements OnInit {
   
   get selectedItems() {
     return this.cartService.getItems();
+  }
+
+  openDialog(productId: number): void {
+    this.dialog.open(ProductModalComponent, {
+      height: "80%",
+      width: "50%",
+      data: { productId }
+    });
   }
 }

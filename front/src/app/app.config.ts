@@ -9,10 +9,6 @@ import { JwtService } from './services/auth/jwt.service';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import { AppComponent } from './app.component';
-import { SignupComponent } from './signup/signup.component';
-
-
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -23,6 +19,6 @@ export const appConfig: ApplicationConfig = {
     FormsModule,
     RouterModule,
     LoginService,
-    JwtService,
+    JwtService, 
   ]
 };
