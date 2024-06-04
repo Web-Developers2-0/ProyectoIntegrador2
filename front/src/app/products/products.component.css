@@ -102,7 +102,9 @@ section {
   line-height: normal;
 }
 
-
+.select-prod{
+  color: #d6c4c4;
+}
 
 #card_section-root div:hover {
   transform: scale(1.01);

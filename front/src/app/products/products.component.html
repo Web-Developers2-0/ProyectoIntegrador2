@@ -15,8 +15,12 @@
       <img [src]="product.image" [alt]="product.name" class="card-img-top align-self-center">
       <div class="card-body">
         <h5 class="card-title">${{ product.price }}</h5>
-        <p class="card-text ">{{ product.name }}</p>
-        <button (click)="addToCart(product)">Agregar al Carrito</button>
+        <p class="card-text">{{ product.name }}</p>
+        <button class="btn btn-primary" (click)="addProduct(product, 1)">Ver más</button>
+        <button class="btn btn-primary" (click)="openDialog(product.id_product)">Detalles</button>
+        <div class="purchase-info mt-3">
+          <input type="number" min="0" value="0" (input)="onQuantityChange(product, $event)" class="form-control d-inline-block" style="width: 80px;">
+        </div>
       </div>
     </div>
   </ng-container>
@@ -25,21 +29,23 @@
       <img [src]="product.image" [alt]="product.name" class="card-img-top align-self-center">
       <div class="card-body">
         <h5 class="card-title">${{ product.price }}</h5>
-        <p class="card-text ">{{ product.name }}</p>
-        <button (click)="addToCart(product)">Agregar al Carrito</button>
+        <p class="card-text">{{ product.name }}</p>
+        <button class="btn btn-primary" (click)="addProduct(product, 1)">Ver más</button>
+        <button class="btn btn-primary" (click)="openDialog(product.id_product)">Detalles</button>
+        <div class="purchase-info mt-3">
+          <input (change)="onQuantityChange(product.id_product, $event)" type="number" min="0" value="0" class="form-control d-inline-block" style="width: 80px;">
+
+        </div>
       </div>
     </div>
   </ng-container>
 </div>
-<<<<<<< HEAD
-=======
-<div>
+<div class="select-prod">
   <h2 class="mt-5">Productos seleccionados:</h2>
   <ul>
-    <li *ngFor="let selectedProduct of selectedProducts">
-      {{ selectedProduct.product.description }} - Cantidad: {{ selectedProduct.quantity }}
+    <li *ngFor="let selectedProduct of selectedItems">
+      {{ selectedProduct.id_product }} - Cantidad: {{ selectedProduct.quantity }}
     </li>
   </ul>
 </div>
-<!-- <button class="btn btn-success mt-3" (click)="createOrder()">Crear Orden</button> -->
->>>>>>> 98036995a8f46ff2bef3e83b9dacd2e9add91a25
+<app-cart></app-cart>
