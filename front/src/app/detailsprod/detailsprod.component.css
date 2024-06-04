@@ -72,7 +72,7 @@ img{
 }
 
 .product-detail h2{
-    color: #e5ac57;
+    color:#000000;
     padding-bottom: 0.6rem;
 }
 
@@ -124,7 +124,7 @@ img{
 }
 
 .product-rating i{
-    color: #fcd69e;
+    color:#1e1e1e;
 }
 
 .product-rating span{
@@ -148,7 +148,7 @@ img{
 }
 
 .new-price span{
-    color: #88ace0;
+    color:#000000;
 }
 
 .product-detail ul{

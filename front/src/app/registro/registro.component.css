@@ -1,31 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Bangers&family=Hachi+Maru+Pop&family=Patrick+Hand&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial;
-    background: url(https://images7.alphacoders.com/114/1144579.jpg);
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background: url(../assets/fondo2.jpg); */
     background-size: cover;
     background-attachment: fixed;
 }
 
-.form-register {
+.form_registro{
     width: 600px;
-    min-height: 680px;
+    height: fit-content;
     background: #1e1e1e;
     margin: auto;
-    margin-top: 2.5rem;
     box-shadow: 7px 13px 37px #000;
     border-top: 20px solid #9a1515;
-    padding: 5px 40px;
     color: #ffffff;
+    padding: 1rem;
+    margin-top: 2.5rem;
 }
 
-.form-register h1 {
+.form_container{
+    padding: 10px;
+    height: fit-content;
+}
+
+.title_registro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_registro h1{
     text-align: center;
     font-size: 3rem;
     margin-bottom: 10px;
@@ -35,75 +44,55 @@ body {
     text-shadow: #fbf0f0 0 -2px;
 }
 
-.form-register h5 {
+.form_registro h2{
     margin: 0;
     text-align: center;
-    height: 35px;
-    margin-bottom: 15px;
+    height: 40px;
+    margin-bottom: 30px;
     border-bottom: 1px solid;
-    font-size: 1.6rem;
-    color: #fcd69e;
+    font-size: 2rem;
+    color:#fcd69e ;
 }
 
-.form__field {
-    display: flex;
-    flex-direction: column;
+.controles{
     width: 100%;
-    border: 1px solid #9a1515;
     margin-bottom: 15px;
+    padding: 11px 10px;
     background: #fbf0f0;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: bold;
 }
 
-.btnSignUp {
+.botom{ 
     width: 100%;
     height: 40px;
     background: #f2b251;
-    border: 3px solid transparent;
+    border: none;
     color: #1e1e1e;
     margin-bottom: 16px;
+    margin-top: 10px;
     font-size: 1.5rem;
     cursor: pointer;
-    transition: border-color 0.3s; /* Transición para el cambio de color del borde */
 }
 
-.btnSignUp:hover {
-    border-color: rgb(244, 229, 116); /* Cambiamos el color del borde a rojo al hacer hover */
+.botom:hover{
+    background: #f0a432;
 }
-
-.form-register p {
+.form_registro p{
     height: 40px;
     text-align: center;
-    
-}
-
-.form-register a {
+    border-bottom: 1px solid;
+} 
+.form_registro a {
     color: #fcd69e;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 14px; 
 }
-
-.form-register a:hover {
+.form_registro a:hover {
     text-decoration: underline;
 }
 
-.title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.logo {
-    max-height: 180px;
-    margin: 0 auto;
-}
-
-input {
-    height: 30px;
-}
-
-.go_back {
+.go_back{
     text-decoration: none;
     background-color: #008bce;
     color: whitesmoke;
@@ -114,24 +103,41 @@ input {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 2rem;
 }
 
-.go_back:hover {
-    transform: scale(1.1);
+.go_back:hover{
+    background-color: #016699;
 }
 
-.form__field.error input {
+.logo{
+    max-height: 180px;
+    margin: 0 auto;
+    display: block;
+}
+
+.form__field{
+    overflow: hidden;
+}
+
+.ng-invalid:not(form).ng-touched {
     border: solid 2px red;
 }
 
-.form__field.success input {
+.ng-valid:not(form).ng-touched {
     border: solid 2px rgb(13, 167, 13);
 }
 
-.form__field small {
+.form__field small{
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #ce2d2d;
+    color:#ce2d2d;
+    padding: 4px 0;
+    margin-bottom: 2px;
+}
+
+.link{
+    cursor: pointer;
 }
