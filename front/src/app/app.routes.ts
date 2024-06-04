@@ -4,11 +4,10 @@ import { AboutComponent } from './about/about.component';
 import { ProductsComponent } from './products/products.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { SignupComponent } from './signup/signup.component';
+// import { SignupComponent } from './signup/signup.component';
 import { ContactComponent } from './contact/contact.component';
 import { DetailsprodComponent} from './detailsprod/detailsprod.component';
 import { ProfileComponent } from './profile/profile.component';
-import { CartComponent } from './cart/cart.component';
 import { RegistroComponent } from './registro/registro.component';
 
 export const routes: Routes = [
@@ -25,7 +24,5 @@ export const routes: Routes = [
     {path:'app-products', component:ProductsComponent},
    
     { path: 'profile', component: ProfileComponent },
-    { path: 'register', component: SignupComponent},
-    { path: 'cart', component: CartComponent},
     { path: 'register', component: RegistroComponent}
 ];
