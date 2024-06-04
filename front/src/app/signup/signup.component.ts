@@ -15,11 +15,7 @@ import { CommonModule } from '@angular/common';
 export class SignupComponent {
   signupForm: FormGroup;  
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private userService: UserService,  // Inyecta el UserService
-    private router: Router
-  ) {
+  constructor( private formBuilder: FormBuilder, private userService: UserService, router: Router) {
     this.signupForm = this.formBuilder.group({
       userName: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(16)]],
       userSurname: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(16)]],
@@ -27,7 +23,7 @@ export class SignupComponent {
       phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       address: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword: ['', [Validators.required]]
+      confirmPassword: ['', [Validators.required]],
     }, {
       validators: this.passwordMatchValidator
     });
@@ -213,7 +209,10 @@ export class SignupComponent {
   }
 
   // Función para manejar el envío del formulario
-  onSubmit(): void {
+  onSubmit(event: Event): void {
+
+    event.preventDefault();
+
     const isValidUsername = this.checkUserName(); 
     const isValidSurname = this.checkUserSurname(); 
     const isValidPassword = this.checkPassword(); 
@@ -238,7 +237,7 @@ export class SignupComponent {
       this.userService.registerUser(user).subscribe(
         response => {
           console.log('Signup successful', response);
-          this.router.navigate(['/login']);
+          // this.router.navigate(['/login']);
         },
         
       );

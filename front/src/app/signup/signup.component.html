@@ -1,5 +1,5 @@
 <section class="form-register">
-    <form id="form" [formGroup]="signupForm" (ngSubmit)="onSubmit()"> 
+    <form id="form" [formGroup]="signupForm" (ngSubmit)="onSubmit($event)"> 
         <div class="title">
             <img src="../../assets/images/logo_planet.png" alt="Logo" class="logo">            
             <h1>PLANET SUPER HEROES</h1>
@@ -42,7 +42,7 @@
                 <small *ngIf="signupForm.get('confirmPassword')?.errors?.['required'] && signupForm.get('confirmPassword')?.touched">*Confirmar contraseña es requerido</small>
             </div>
             <div>
-                <button class="btnSignUp" type="submit" [disabled]="signupForm.invalid">Registrarse</button>
+                <button class="btnSignUp" type="submit" [disabled]="!signupForm.valid">Registrarse</button>
             </div>         
                                             
             <p>
