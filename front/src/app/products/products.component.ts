@@ -1,27 +1,82 @@
-import { NgFor, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductServiceService } from '../services/product-service.service';
+import { Product } from '../services/product.interface';
 import { RouterLink } from '@angular/router';
-
+import { CartService } from '../services/cart/cart.service';
+import { CartComponent } from '../cart/cart.component';
+import { NgFor, NgIf } from '@angular/common';
+import { ProductModalComponent } from '../modal-detail/modal-detail.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [NgFor, NgIf, RouterLink,],
+  imports: [NgFor, NgIf, RouterLink, CartComponent],
   templateUrl: './products.component.html',
-  styleUrl: './products.component.css'
+  styleUrls: ['./products.component.css']
 })
 
-export class ProductsComponent {
-  productList: any[] = [];
+export class ProductsComponent implements OnInit {
+  productList: Product[] = [];
   selectedCategory: string = 'marvel';
+  selectedProducts: any[] = [];
 
-  constructor(private productServiceService: ProductServiceService) { 
+  constructor(private productServiceService: ProductServiceService, public cartService: CartService, public dialog: MatDialog) {}
+
+  ngOnInit(): void {
     this.updateCategory(this.selectedCategory);
   }
 
   updateCategory(category: string): void {
     this.selectedCategory = category;
-    console.log("me actualizo");
-    this.productList = this.productServiceService.obtenerProductos().filter(product => product.category === this.selectedCategory);
+    this.productServiceService.obtenerProductos().subscribe(
+      (products: Product[]) => {
+        this.productList = products.filter(product => product.category === this.getCategoryId(this.selectedCategory));
+      },
+      (error) => {
+        console.error('Error fetching products', error);
+      }
+    );
+  }
+
+  getCategoryId(category: string): number {
+    switch (category) {
+      case 'marvel':
+        return 1;
+      case 'dc':
+        return 2;
+      default:
+        return 0;
+    }
+  }
+
+  addProduct(product: any, quantity: number) {
+    if (quantity > 0) {
+
+    }
+  }
+  addProduct2(productId: number, quantity: number) {
+    if (quantity > 0) {
+      this.cartService.addToCart(productId, quantity);
+      console.log('Producto añadido:', productId);
+    }
+  }
+  
+   onQuantityChange(product: any, event: any): void {
+    const quantity = event.target.valueAsNumber;
+    if (quantity > 0) {
+      this.cartService.addToCart(product.id_product, quantity);
+    }
+  }
+  
+  get selectedItems() {
+    return this.cartService.getItems();
+  }
+
+  openDialog(productId: number): void {
+    this.dialog.open(ProductModalComponent, {
+      height: "80%",
+      width: "50%",
+      data: { productId }
+    });
   }
 }
