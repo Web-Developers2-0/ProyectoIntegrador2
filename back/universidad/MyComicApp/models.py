@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import Group  # Agrega esta línea
+from django.contrib.auth.models import Group  
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, role=None, **extra_fields):
@@ -25,7 +25,7 @@ class UserManager(BaseUserManager):
         return self.create_user(email, password, role, **extra_fields)
 
 class User(AbstractBaseUser, PermissionsMixin):
-    id = models.AutoField(primary_key=True) 
+    id_users = models.AutoField(primary_key=True) 
     email = models.EmailField(unique=True)
     first_name = models.CharField(max_length=30, blank=False)
     last_name = models.CharField(max_length=30, blank=False)
