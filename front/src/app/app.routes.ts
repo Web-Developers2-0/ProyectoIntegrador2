@@ -4,11 +4,10 @@ import { AboutComponent } from './about/about.component';
 import { ProductsComponent } from './products/products.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { SignupComponent } from './signup/signup.component';
+// import { SignupComponent } from './signup/signup.component';
 import { ContactComponent } from './contact/contact.component';
 import { DetailsprodComponent} from './detailsprod/detailsprod.component';
 import { ProfileComponent } from './profile/profile.component';
-import { PaymentComponent } from './pasarela de pago/payment.component';
 
 export const routes: Routes = [
 
@@ -23,6 +22,6 @@ export const routes: Routes = [
     {path:"", redirectTo:"/app-products", pathMatch:"full"},
     {path:'app-products', component:ProductsComponent},
     { path: 'profile', component: ProfileComponent },
-    { path: 'register', component: SignupComponent},
-    { path: 'checkout', component:PaymentComponent},
+    { path: 'register', component: RegistroComponent}, 
+    { path: 'checkout', component: PaymentComponent}, 
 ];

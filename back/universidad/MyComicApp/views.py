@@ -15,7 +15,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
 from django.utils import timezone
-
+from rest_framework.decorators import api_view
 
 
 
@@ -114,6 +114,8 @@ class CreateOrderView(APIView):
             return Response(OrderSerializer(order).data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
+
+
     
 #VER LISTA DE ORDENES DE USUARIO AUTENTICADO      
 class UserOrdersView(ListAPIView):
