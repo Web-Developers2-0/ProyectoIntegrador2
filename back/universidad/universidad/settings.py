@@ -96,7 +96,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'planetSuperheroesDB',
         'USER': 'root',
-        'PASSWORD': 'admin',
+        'PASSWORD': 'desarrollo25',
         'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {
