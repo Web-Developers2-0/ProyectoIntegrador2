@@ -23,7 +23,7 @@ export const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
     {path:"", redirectTo:"/app-products", pathMatch:"full"},
     {path:'app-products', component:ProductsComponent},
-   
+    { path: 'payment', component: PaymentComponent },
     { path: 'profile', component: ProfileComponent },
     { path: 'register', component: RegistroComponent}, 
     { path: 'checkout', component: PaymentComponent}, 

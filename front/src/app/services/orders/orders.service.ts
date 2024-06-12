@@ -30,7 +30,7 @@ export class OrdersService {
     } else if (error.status === 403) {
       console.error('No tienes permisos para realizar esta acción', error.error);
     } else {
-      console.error(`Backend retorno el código de estado: `, error.status, error.error);
+      console.error(`Backend retorno el código de estado: `, error.status===407, error.error);
     }
     return throwError(() => new Error('Algo salio mal, intente nuevamente'));
   }

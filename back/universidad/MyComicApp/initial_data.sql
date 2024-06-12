@@ -188,34 +188,3 @@ VALUES
 ('developers-superheroes@gmail.com', 'Develop', 'Team','pbkdf2_sha256$600000$TM6SUusGx9g4tG3ixjFULr$2D2mz/i5G1/1mEx4bhuIm6NKwPqmg3ZafjD0KD9SLFA=', 'localhost', 123456789, 'michael_brown.jpg', '2024-05-23 16:00:04', true, true, true, 3);
 
 
-INSERT INTO `planetSuperheroesDB`.`orders` (user_id, state, order_date, payment_method, shipping_method, payment_status, total_amount)
-VALUES
-(1, 'En Proceso', '2023-09-25', 'Tarjeta de crédito', 'Envío exprés', 'Aprobado', 200.00),
-(2, 'Cancelado', '2023-09-26', 'PayPal', 'Envío estándar', 'Cancelado', 150.00),
-(3, 'Completado', '2023-09-27', 'Tarjeta de crédito', 'Envío estándar', 'Completado', 95.00),
-(4, 'En Proceso', '2023-09-28', 'PayPal', 'Envío exprés', 'Aprobado', 300.00),
-(5, 'Completado', '2023-09-29', 'Tarjeta de crédito', 'Envío estándar', 'Aprobado', 180.00),
-(6, 'Cancelado', '2023-09-30', 'PayPal', 'Envío estándar', 'Cancelado', 9800),
-
-(1, 'En Proceso', '2023-09-25', 'Tarjeta de crédito', 'Envío exprés', 'Aprobado', 200.00),
-(2, 'Cancelado', '2023-09-26', 'PayPal', 'Envío estándar', 'Cancelado', 150.00),
-(3, 'Completado', '2023-09-27', 'Tarjeta de crédito', 'Envío estándar', 'Completado', 95.00),
-(4, 'En Proceso', '2023-09-28', 'PayPal', 'Envío exprés', 'Aprobado', 300.00),
-(5, 'Completado', '2023-09-29', 'Tarjeta de crédito', 'Envío estándar', 'Aprobado', 180.00),
-(6, 'Cancelado', '2023-09-30', 'PayPal', 'Envío estándar', 'Cancelado', 9800);
-
-INSERT INTO `planetSuperheroesDB`.`order_items` (quantity, product_id, order_id)
-VALUES
-(3, 1, 1),
-(2, 2, 2),
-(1, 3, 3),
-(2, 4, 4),
-(4, 5, 5),
-(1, 6, 6),
-
-(1, 6, 7),
-(3, 5, 8),
-(2, 4, 9),
-(1, 3, 10),
-(3, 2, 11),
-(2, 1, 12);

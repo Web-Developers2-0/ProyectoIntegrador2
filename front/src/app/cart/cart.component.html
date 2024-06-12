@@ -1,10 +1,9 @@
-    <div class="container">
-      <h1>Carrito de compras</h1>
-      <ul>
-        <li *ngFor="let item of items">
-          {{ item.product}} - {{ item.quantity }}
-        </li>
-      </ul>
-      <button (click)="createOrder()">Crear Orden</button>
-    </div>
-    
+<div class="container">
+  <h1>Carrito de compras</h1>
+  <ul>
+    <li *ngFor="let item of items">
+      {{ item.product}} - {{ item.quantity }}
+    </li>
+  </ul>
+  <button (click)="createOrder()">Crear Orden</button>
+</div>
