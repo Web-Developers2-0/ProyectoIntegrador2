@@ -8,6 +8,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ContactComponent } from './contact/contact.component';
 import { DetailsprodComponent} from './detailsprod/detailsprod.component';
 import { ProfileComponent } from './profile/profile.component';
+import { RegistroComponent } from './registro/registro.component';
+import { PaymentComponent } from './pasarela de pago/payment.component';
+import { CartComponent } from './cart/cart.component';
 
 export const routes: Routes = [
 
@@ -21,6 +24,9 @@ export const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
     {path:"", redirectTo:"/app-products", pathMatch:"full"},
     {path:'app-products', component:ProductsComponent},
+    { path: 'cart', component: CartComponent },
+    { path: 'payment', component: PaymentComponent },
+
     { path: 'profile', component: ProfileComponent },
     { path: 'register', component: RegistroComponent}, 
     { path: 'checkout', component: PaymentComponent}, 

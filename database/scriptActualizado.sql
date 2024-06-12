@@ -28,8 +28,8 @@ CREATE TABLE `products` (
     FOREIGN KEY (`category_id`) REFERENCES `categories` (`id_category`)
 );
 
-CREATE TABLE `user` (
-    `id` INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE `users` (
+    `id_users` INT AUTO_INCREMENT PRIMARY KEY,
     `first_name` VARCHAR(45) NOT NULL,
     `last_name` VARCHAR(45) NOT NULL,
     `email` VARCHAR(45) NOT NULL UNIQUE,
@@ -42,21 +42,21 @@ CREATE TABLE `user` (
 
 CREATE TABLE `orders` (
     `id_order` INT AUTO_INCREMENT PRIMARY KEY,
-    `user_id` INT NOT NULL,
+    `user_id` INT,
     `state` VARCHAR(45) NOT NULL,
     `order_date` DATE,
     `payment_method` VARCHAR(45) NOT NULL,
     `shipping_method` VARCHAR(45),
     `payment_status` VARCHAR(45),
     `total_amount` DECIMAL(10, 2),
-    FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`)
+    FOREIGN KEY (`user_id`) REFERENCES `users` (`id_users`)
 );
 
 CREATE TABLE `order_items` (
     `id_order_items` INT AUTO_INCREMENT PRIMARY KEY,
     `quantity` INT NOT NULL,
-    `product_id` INT NOT NULL,
-    `order_id` INT NOT NULL,
+    `product_id` INT,
+    `order_id` INT,
     FOREIGN KEY (`product_id`) REFERENCES `products` (`id_product`),
     FOREIGN KEY (`order_id`) REFERENCES `orders` (`id_order`)
 );
