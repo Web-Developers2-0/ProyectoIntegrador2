@@ -1,10 +1,11 @@
-import { NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ProductServiceService } from '../services/product-service.service';
 import { Product } from '../services/product.interface';
 import { RouterLink } from '@angular/router';
 import { CartService } from '../services/cart/cart.service';
-import { CartComponent } from '../cart/cart.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ProductModalComponent } from '../modal-detail/modal-detail.component';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-products',
@@ -12,16 +13,16 @@ import { CartComponent } from '../cart/cart.component';
   imports: [NgFor, NgIf, RouterLink],
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
-
 })
-
-
 export class ProductsComponent implements OnInit {
   productList: Product[] = [];
   selectedCategory: string = 'marvel';
-  selectedProducts: any[] = [];
 
-  constructor(private productServiceService: ProductServiceService) {}
+  constructor(
+    private productServiceService: ProductServiceService, 
+    public cartService: CartService, 
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.updateCategory(this.selectedCategory);
@@ -42,18 +43,39 @@ export class ProductsComponent implements OnInit {
   getCategoryId(category: string): number {
     switch (category) {
       case 'marvel':
-        return 1; // Asume que la categoría 'marvel' tiene el ID 1
+        return 1;
       case 'dc':
-        return 2; // Asume que la categoría 'dc' tiene el ID 2
+        return 2;
       default:
         return 0;
     }
   }
 
-  addProduct(product: any, quantity: number) {
-    if (quantity > 0) {
-      this.selectedProducts.push({ ...product, quantity });
-      console.log('Producto añadido:', { ...product, quantity });
+  onQuantityChange(product: Product, event: any): void {
+    const quantity = parseInt(event.target.value, 10); // Convertir a número
+    const currentQuantity = this.cartService.getItems().find(item => item.product.id_product === product.id_product)?.quantity || 0; // Obtener la cantidad actual del producto en el carrito
+  
+    // Calcular la diferencia entre la nueva cantidad y la cantidad actual
+    const quantityDiff = quantity - currentQuantity;
+  
+    // Actualizar la cantidad del producto en el carrito
+    if (quantityDiff > 0) {
+      this.cartService.addToCart(product, quantityDiff);
+    } else if (quantityDiff < 0) {
+      // Si la diferencia es negativa, eliminar la cantidad excedente del carrito
+      this.cartService.removeFromCart(product, Math.abs(quantityDiff));
     }
+  }
+  
+  get selectedItems() {
+    return this.cartService.getItems();
+  }
+
+  openDialog(productId: number): void {
+    this.dialog.open(ProductModalComponent, {
+      height: "80%",
+      width: "50%",
+      data: { productId }
+    });
   }
 }

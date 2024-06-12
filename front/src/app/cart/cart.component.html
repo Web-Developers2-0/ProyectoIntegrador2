@@ -1,4 +1,9 @@
-<div class="productCart-wrapper">
-       <h1>CARRITO</h1>
-        
+<div class="container">
+  <h1>Carrito de compras</h1>
+  <ul>
+    <li *ngFor="let item of items">
+      {{ item.product.name }} - {{ item.quantity }}
+    </li>
+  </ul>
+  <button (click)="goToPayment()">Procesar Pago</button>
 </div>
