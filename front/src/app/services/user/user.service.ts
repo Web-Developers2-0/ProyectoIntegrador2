@@ -27,7 +27,7 @@ export class UserService {
       'Authorization': `Bearer ${this.loginService.userToken}` 
     });
   
-    return this.http.patch('http://127.0.0.1:8000/api/user/update/', user, { headers });	
+    return this.http.patch('http://127.0.0.1:8000/api/user/', user, { headers });	
   }
 
   private handleError(error: HttpErrorResponse) {

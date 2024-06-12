@@ -25,7 +25,7 @@ export const routes: Routes = [
     {path:"", redirectTo:"/app-products", pathMatch:"full"},
     {path:'app-products', component:ProductsComponent},
     { path: 'cart', component: CartComponent },
-
+    { path: 'payment', component: PaymentComponent },
 
     { path: 'profile', component: ProfileComponent },
     { path: 'register', component: RegistroComponent}, 
