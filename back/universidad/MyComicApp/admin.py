@@ -3,9 +3,7 @@ from .models import User, Role, Category, Product, Order, OrderItem
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import Permission
 
-
-#USERS
-
+# Define la clase UserAdmin
 class UserAdmin(admin.ModelAdmin):
     list_display = ('id', 'first_name', 'last_name', 'email', 'address', 'image', 'display_orders', 'role')
     filter_horizontal = ('user_permissions',)
@@ -13,92 +11,62 @@ class UserAdmin(admin.ModelAdmin):
         return ", ".join([str(order.id_order) for order in obj.orders.all()])
     display_orders.short_description = 'Orders'
 
-    
     def has_add_permission(self, request):
-        
         if request.user.groups.filter(name='Vendedor').exists():
             return False
-        
         return True
 
-    
     def has_change_permission(self, request, obj=None):
-        
         if request.user.groups.filter(name='Vendedor').exists():
             return False
-        
         return True
 
-    
     def has_delete_permission(self, request, obj=None):
-        
         if request.user.groups.filter(name='Vendedor').exists():
             return False
-        
         return True
 
-    
     def has_view_permission(self, request, obj=None):
-        
         if request.user.groups.filter(name='Vendedor').exists():
             return True
-       
         return super().has_view_permission(request, obj)
 
-
-admin.site.register(User, UserAdmin)
-
-
+# Define la clase RoleAdmin
 class RoleAdmin(admin.ModelAdmin):
     list_display = ('id_role', 'name')
 
-
-admin.site.register(Role, RoleAdmin)
-
-
-
-
-
-#PRODRUCTS
-
+# Define la clase CategoryAdmin
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id_category', 'name')
 
-admin.site.register(Category, CategoryAdmin)
-
+# Define la clase ProductAdmin
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('id_product', 'name', 'description', 'price', 'discount', 'stock', 'image', 'pages', 'format', 'weight', 'isbn', 'category')
 
-admin.site.register(Product, ProductAdmin)
-
-
-
-
-#ORDERS
-
+# Define la clase OrderItemInline antes de OrderAdmin
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
     extra = 1
 
+# Define la clase OrderAdmin
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('id_order', 'id_user', 'state', 'order_date', 'payment_method', 'shipping_method', 'payment_status', 'total_amount')
     list_filter = ('state', 'order_date', 'payment_method', 'shipping_method', 'payment_status')
     search_fields = ('id_order', 'id_user__email')
     inlines = [OrderItemInline]
 
-   
     def order_items(self, obj):
         return ", ".join([str(item) for item in obj.order_items.all()])
     order_items.short_description = 'Order Items'
 
-    
     def has_view_permission(self, request, obj=None):
-     
         if request.user.groups.filter(name='Vendedor').exists():
             return True
-
         return super().has_view_permission(request, obj)
 
-
+# Registra los modelos en el panel de administración
+admin.site.register(User, UserAdmin)
+admin.site.register(Role, RoleAdmin)
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(Product, ProductAdmin)
 admin.site.register(Order, OrderAdmin)
-
