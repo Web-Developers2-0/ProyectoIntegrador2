@@ -177,5 +177,9 @@ SIMPLE_JWT = {
     'TOKEN_TYPE_CLAIM': 'token_type',   
 }
 
+
+
+
+
 # estoy probando soluciones al error 500
 APPEND_SLASH = False
