@@ -2,8 +2,9 @@
   <h1>Carrito de compras</h1>
   <ul>
     <li *ngFor="let item of items">
-      {{ item.product.name }} - {{ item.quantity }}
+      {{ item.product.name }} - Cantidad:{{ item.quantity }} - Total:${{ item.product.price * item.quantity | number:'1.0-2' }}
     </li>
   </ul>
+  <p class="total">Total: ${{ getTotal() | number:'1.0-2' }}</p>
   <button (click)="goToPayment()">Procesar Pago</button>
 </div>
