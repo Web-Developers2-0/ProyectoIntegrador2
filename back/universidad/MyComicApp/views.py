@@ -17,9 +17,6 @@ from rest_framework.viewsets import ModelViewSet
 from django.utils import timezone
 from rest_framework.decorators import api_view
 
-
-
-
 class RegisterView(APIView):
     permission_classes = [AllowAny]
     
