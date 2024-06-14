@@ -10,21 +10,37 @@ import { DetailsprodComponent} from './detailsprod/detailsprod.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegistroComponent } from './registro/registro.component';
 import { PaymentComponent } from './pasarela de pago/payment.component';
+import { CartComponent } from './cart/cart.component';
+import { AuthGuard } from './guards/auth.guard';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 export const routes: Routes = [
 
-    {path:"", redirectTo:"/home", pathMatch:"full"},
-    {path:'home', component:HomeComponent},
-    {path:'about', component:AboutComponent},
-    {path:'contact', component:ContactComponent},
-    {path:'app-products', component:ProductsComponent},
-    {path: 'detailsprod', component:DetailsprodComponent},
+    { path: "", redirectTo:"/home", pathMatch:"full" },
+    { path: 'home', component:HomeComponent },
+    { path: 'about', component:AboutComponent },
+    { path: 'contact', component:ContactComponent },
+    { path: 'app-products', component:ProductsComponent },
+    { path: 'detailsprod', component:DetailsprodComponent },
     { path: 'login', component:LoginComponent },
-    { path: 'dashboard', component: DashboardComponent },
-    {path:"", redirectTo:"/app-products", pathMatch:"full"},
-    {path:'app-products', component:ProductsComponent},
-   
-    { path: 'profile', component: ProfileComponent },
-    { path: 'register', component: RegistroComponent}, 
-    { path: 'checkout', component: PaymentComponent}, 
+    { 
+        path: 'dashboard', 
+        component: DashboardComponent,
+        canActivate: [AuthGuard]
+    },
+    // {
+    //     path: '**',
+    //     component: PageNotFoundComponent
+    // },
+    { path: "", redirectTo:"/app-products", pathMatch:"full" },
+    { path: 'app-products', component:ProductsComponent },
+    { path: 'cart', component: CartComponent },
+    { path: 'payment', component: PaymentComponent },
+    { 
+        path: 'profile', 
+        component: ProfileComponent,
+        canActivate: [AuthGuard]
+    },
+    { path: 'register', component: RegistroComponent }, 
+    { path: 'checkout', component: PaymentComponent }, 
 ];

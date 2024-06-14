@@ -17,6 +17,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class ProductModalComponent implements OnInit {
   product: Product | null = null;
   images: string[] = [];
+  selectedImage: string | null = null;
 
   constructor(
     public dialogRef: MatDialogRef<ProductModalComponent>,

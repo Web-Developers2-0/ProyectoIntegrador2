@@ -6,8 +6,8 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.generics import GenericAPIView
 from rest_framework.generics import RetrieveUpdateAPIView
 from django.contrib.auth import authenticate
-from .serializers import UserSerializer, CustomTokenObtainPairSerializer, ProductSerializer, CategorySerializer,OrderCreateSerializer, OrderSerializer,LogoutSerializer
-from .models import User, Product, Category, Order
+from .serializers import RoleSerializer, UserSerializer, CustomTokenObtainPairSerializer, ProductSerializer, CategorySerializer,OrderCreateSerializer, OrderSerializer,LogoutSerializer
+from .models import Role, User, Product, Category, Order
 from rest_framework.generics import ListAPIView
 from MyComicApp.serializers import (CustomTokenObtainPairSerializer, UserSerializer)
 from MyComicApp.models import User
@@ -16,7 +16,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
 from django.utils import timezone
 from rest_framework.decorators import api_view
-
+from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
 
 
 
@@ -96,13 +96,25 @@ class CategoryViewSet(ModelViewSet):
     serializer_class = CategorySerializer
     permission_classes = [AllowAny]
 
+""" class ProductViewSet(ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    permission_classes = [AllowAny] """
+    
+
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     permission_classes = [AllowAny]
+
+
+    def get_permissions(self):
+        if self.action in ['create', 'update', 'partial_update', 'destroy']:
+            self.permission_classes = [IsAdminUser]
+ 
+        return super(ProductViewSet, self).get_permissions()
     
-    
-    
+
 #CREAR ORDENES CON USUARIO AUTENTICADO 
 class CreateOrderView(APIView):
     permission_classes = [IsAuthenticated]
@@ -128,5 +140,8 @@ class UserOrdersView(ListAPIView):
 
 
 
-
+class RoleViewSet(ModelViewSet):
+    queryset = Role.objects.all()
+    serializer_class = RoleSerializer
+    permission_classes = [IsAdminUser]
 

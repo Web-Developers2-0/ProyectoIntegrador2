@@ -1,5 +1,3 @@
-<h1 class="text-center">Nuestros Productos</h1>
-
 <div class="card_section-titulo">
   <a href="#" (click)="updateCategory('marvel'); $event.preventDefault()" class="text-decoration-none">
     <h2 class="card_section-titulo1">Marvel Comics</h2>
@@ -16,8 +14,7 @@
       <div class="card-body">
         <h5 class="card-title">${{ product.price }}</h5>
         <p class="card-text">{{ product.name }}</p>
-        <button class="btn btn-primary" (click)="addProduct(product, 1)">Ver más</button>
-        <button class="btn btn-primary" (click)="openDialog(product.id_product)">Detalles</button>
+        <button class="btn btn-primary" (click)="openModalDetail(product.id_product)">Detalles</button>
         <div class="purchase-info mt-3">
           <input type="number" min="0" value="0" (input)="onQuantityChange(product, $event)" class="form-control d-inline-block" style="width: 80px;">
         </div>
@@ -30,11 +27,9 @@
       <div class="card-body">
         <h5 class="card-title">${{ product.price }}</h5>
         <p class="card-text">{{ product.name }}</p>
-        <button class="btn btn-primary" (click)="addProduct(product, 1)">Ver más</button>
-        <button class="btn btn-primary" (click)="openDialog(product.id_product)">Detalles</button>
+        <button class="btn btn-primary" (click)="openModalDetail(product.id_product)">Detalles</button>
         <div class="purchase-info mt-3">
-          <input (change)="onQuantityChange(product.id_product, $event)" type="number" min="0" value="0" class="form-control d-inline-block" style="width: 80px;">
-
+          <input type="number" min="0" value="0" (input)="onQuantityChange(product, $event)" class="form-control d-inline-block" style="width: 80px;">
         </div>
       </div>
     </div>
@@ -44,8 +39,9 @@
   <h2 class="mt-5">Productos seleccionados:</h2>
   <ul>
     <li *ngFor="let selectedProduct of selectedItems">
-      {{ selectedProduct.id_product }} - Cantidad: {{ selectedProduct.quantity }}
+      {{ selectedProduct.product.name }} - Cantidad: {{ selectedProduct.quantity }}
     </li>
   </ul>
 </div>
-<app-cart></app-cart>
+<!-- Agregar un botón para ir al carrito -->
+<button class="go_cart button_slide slide_right" [routerLink]="['/cart']">Ir al carrito</button>
