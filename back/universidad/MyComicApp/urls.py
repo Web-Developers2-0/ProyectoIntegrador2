@@ -11,6 +11,8 @@ from rest_framework.routers import DefaultRouter
 router = routers.DefaultRouter()
 router.register(r'categories', views.CategoryViewSet)
 router.register(r'products', views.ProductViewSet)
+router.register(r'roles', views.RoleViewSet)
+
 
 urlpatterns = [
     path('register/', views.RegisterView.as_view(), name='register'),

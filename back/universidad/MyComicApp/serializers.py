@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import User,Product, Category
+from .models import Role, User,Product, Category
 
 from .models import User
 
@@ -63,13 +63,10 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product
         fields = '__all__'
 
-
-
-
-
-
-
-
+class RoleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Role
+        fields = '__all__'
 
 
 
@@ -78,8 +75,6 @@ class OrderItemCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderItem
         fields = ['product', 'quantity']
-
-
 
  
 class OrderCreateSerializer(serializers.ModelSerializer):

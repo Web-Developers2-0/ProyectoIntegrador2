@@ -73,8 +73,8 @@ export class ProductsComponent implements OnInit {
 
   openDialog(productId: number): void {
     this.dialog.open(ProductModalComponent, {
-      height: "80%",
-      width: "50%",
+      height: "90%",
+      width: "90%",
       data: { productId }
     });
   }
