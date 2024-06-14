@@ -71,11 +71,21 @@ export class ProductsComponent implements OnInit {
     return this.cartService.getItems();
   }
 
-  openDialog(productId: number): void {
-    this.dialog.open(ProductModalComponent, {
-      height: "90%",
-      width: "90%",
-      data: { productId }
-    });
+  openModalDetail(productId: number): void {
+    let dialogRef;
+    console.log("screen.width", screen.width);
+
+    if (screen.width < 500) {
+      dialogRef = this.dialog.open(ProductModalComponent, {
+        maxWidth: '100vw',
+        width: "90%",
+        data: { productId }
+      });
+    } else {
+      dialogRef = this.dialog.open(ProductModalComponent, {
+        width: "70%",
+        data: { productId }
+      });
+    }
   }
 }

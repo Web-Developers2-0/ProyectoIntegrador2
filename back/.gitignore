@@ -1,4 +1,6 @@
 entorno/
 env32/
+<<<<<<<<< Temporary merge branch 1
+=========
 .env
-__pycache__/
+>>>>>>>>> Temporary merge branch 2
