@@ -26,4 +26,9 @@ export class CartComponent implements OnInit {
   goToPayment() {
     this.router.navigate(['/payment']);
   }
+
+  getTotal(): number {
+    // Calcular el precio total sumando el precio de cada ítem multiplicado por su cantidad
+    return this.items.reduce((total, item) => total + (item.product.price * item.quantity), 0);
+  }
 }

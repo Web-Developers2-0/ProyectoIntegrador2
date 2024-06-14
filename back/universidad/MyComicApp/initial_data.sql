@@ -190,19 +190,19 @@ VALUES
 
 INSERT INTO `planetSuperheroesDB`.`orders` (user_id, state, order_date, payment_method, shipping_method, payment_status, total_amount)
 VALUES
-(1, 'En Proceso', '2023-09-25', 'Tarjeta de crédito', 'Envío exprés', 'Aprobado', 200.00),
-(2, 'Cancelado', '2023-09-26', 'PayPal', 'Envío estándar', 'Cancelado', 150.00),
-(3, 'Completado', '2023-09-27', 'Tarjeta de crédito', 'Envío estándar', 'Completado', 95.00),
-(4, 'En Proceso', '2023-09-28', 'PayPal', 'Envío exprés', 'Aprobado', 300.00),
-(5, 'Completado', '2023-09-29', 'Tarjeta de crédito', 'Envío estándar', 'Aprobado', 180.00),
-(6, 'Cancelado', '2023-09-30', 'PayPal', 'Envío estándar', 'Cancelado', 9800),
+(1, 'En Proceso', '2023-09-25', 'Tarjeta de credito', 'Envio expres', 'Aprobado', 200.00),
+(2, 'Cancelado', '2023-09-26', 'PayPal', 'Envio estandar', 'Cancelado', 150.00),
+(3, 'Completado', '2023-09-27', 'Tarjeta de credito', 'Envio estandar', 'Completado', 95.00),
+(4, 'En Proceso', '2023-09-28', 'PayPal', 'Envio expres', 'Aprobado', 300.00),
+(5, 'Completado', '2023-09-29', 'Tarjeta de credito', 'Envio estandar', 'Aprobado', 180.00),
+(6, 'Cancelado', '2023-09-30', 'PayPal', 'Envio estandar', 'Cancelado', 9800),
 
-(1, 'En Proceso', '2023-09-25', 'Tarjeta de crédito', 'Envío exprés', 'Aprobado', 200.00),
-(2, 'Cancelado', '2023-09-26', 'PayPal', 'Envío estándar', 'Cancelado', 150.00),
-(3, 'Completado', '2023-09-27', 'Tarjeta de crédito', 'Envío estándar', 'Completado', 95.00),
-(4, 'En Proceso', '2023-09-28', 'PayPal', 'Envío exprés', 'Aprobado', 300.00),
-(5, 'Completado', '2023-09-29', 'Tarjeta de crédito', 'Envío estándar', 'Aprobado', 180.00),
-(6, 'Cancelado', '2023-09-30', 'PayPal', 'Envío estándar', 'Cancelado', 9800);
+(1, 'En Proceso', '2023-09-25', 'Tarjeta de credito', 'Envío expres', 'Aprobado', 200.00),
+(2, 'Cancelado', '2023-09-26', 'PayPal', 'Envio estandar', 'Cancelado', 150.00),
+(3, 'Completado', '2023-09-27', 'Tarjeta de credito', 'Envio estandar', 'Completado', 95.00),
+(4, 'En Proceso', '2023-09-28', 'PayPal', 'Envio expres', 'Aprobado', 300.00),
+(5, 'Completado', '2023-09-29', 'Tarjeta de credito', 'Envio estandar', 'Aprobado', 180.00),
+(6, 'Cancelado', '2023-09-30', 'PayPal', 'Envio estandar', 'Cancelado', 9800);
 
 INSERT INTO `planetSuperheroesDB`.`order_items` (quantity, product_id, order_id)
 VALUES

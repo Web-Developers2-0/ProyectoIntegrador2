@@ -7,7 +7,6 @@ from django.contrib.auth.models import Permission
 # Define la clase UserAdmin
 
 #USERS
-
 class UserAdmin(admin.ModelAdmin):
     list_display = ('id', 'first_name', 'last_name', 'email', 'address', 'image', 'display_orders', 'role')
     filter_horizontal = ('user_permissions',)
