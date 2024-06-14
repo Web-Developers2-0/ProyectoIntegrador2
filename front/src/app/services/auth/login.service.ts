@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { LoginRequest } from './login.request';
 import { Observable, BehaviorSubject, tap, catchError, throwError, map } from 'rxjs';
+import { jwtDecode } from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
@@ -69,5 +70,15 @@ export class LoginService {
 
   get userToken():String{
     return this.token;
+  }
+
+  isValidToken(): boolean {
+    try{
+      const decodedToken = jwtDecode(this.token);
+      const currentTime = Date.now() / 1000;
+      return decodedToken.exp !== undefined && decodedToken.exp > currentTime;
+    }catch(error){
+      return false;
+    }
   }
 }
